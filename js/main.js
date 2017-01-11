@@ -55,6 +55,7 @@ $(function() {
   }
  });
 
- sendPostDataOnSubmit('.login-form', 'Login/zaloguj', true);
- sendPostDataOnSubmit('.logout-form', 'Login/wyloguj', true);
+ // sendPostDataOnSubmit('.login-form', 'Login/zaloguj', true);
+ // sendPostDataOnSubmit('.logout-form', 'Login/wyloguj', true);
+ sendPostDataOnSubmit('.register_form', 'Register/zarejestruj', false);
 });
