@@ -14,4 +14,10 @@ class Main extends CI_Controller
         $this->load->view('404');
         $this->load->view('footer');
     }
+    public function register()
+    {
+      $this->load->view('header');
+      $this->load->view('register');
+      $this->load->view('footer');
+    }
 }

@@ -1,68 +1,70 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 html {
-    cursor: default;
-    color: #000;
-    background-color: #fff;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-}
-
-body {
-    margin: 0;
-}
-
-main {
-    background-color: #fff8c6;
-    margin: 0 50px;
-    padding: 5px 10px;
-    border-left: 1px dotted black;
-    border-right: 1px dotted black;
-    border-bottom: 1px dotted black;
-
-}
-
-a {
+  cursor: default;
+  color: #000;
+  background-color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px; }
+  html body {
+    margin: 0; }
+    html body main {
+      margin: 0 50px;
+      padding: 5px 10px;
+      border-right: 1px dotted #000;
+      border-bottom: 1px dotted #000;
+      border-left: 1px dotted #000;
+      background-color: #fff8c6; }
+    html body .register_form {
+      width: 480px;
+      font-size: 30px;
+      margin: 100px auto 0 auto;
+      border: 1px solid black; }
+      html body .register_form .input {
+        display: flex;
+        width: 460px;
+        margin: 5px 10px; }
+      html body .register_form label {
+        font-size: 20px;
+        width: 140px;
+        display: block; }
+      html body .register_form input[type="email"],
+      html body .register_form input[type="password"],
+      html body .register_form input[type="text"] {
+        display: block;
+        width: 300px;
+        margin: 0 10px; }
+      html body .register_form input[type="submit"] {
+        width: 100%;
+        height: 50px;
+        margin: 10px 20px;
+        font-size: 20px; }
+  html a {
     text-decoration: none;
-    color: white;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.btn {
+    color: #0057ff; }
+    html a:hover {
+      text-decoration: underline; }
+  html .btn {
     display: block;
     width: 100%;
     margin: 5px;
     padding: 10px 30px;
     cursor: pointer;
-    -webkit-transition: 0.3s ease-in;
-    -moz-transition: 0.3s ease-in;
-    -ms-transition: 0.3s ease-in;
-    -o-transition: 0.3s ease-in;
     transition: 0.3s ease-in;
     text-align: center;
     text-decoration: none;
     border: none;
     border-radius: 5px;
-    font-size: 100%;
-    -webkit-user-select: none;
-}
-
-.btn:hover {
-    color: #000;
-    background: #c2c2c2;
-    text-decoration: none;
-}
-
-.green-btn {
+    font-size: 100%; }
+    html .btn:hover {
+      text-decoration: none;
+      color: #000;
+      background: #c2c2c2; }
+  html .green-btn {
     width: 300px;
     height: 50px;
     color: white;
-    background-color: #4CAF50;
-}
-
-.response {
+    background-color: #4CAF50; }
+  html .response {
     position: absolute;
     z-index: 9999;
     top: 15%;
@@ -73,18 +75,18 @@ a:hover {
     min-height: 200px;
     max-height: 70%;
     margin: 0 auto;
-    padding: 15px 30px 60px 30px;
+    padding: 15px 30px 60px;
     color: #000;
     border-radius: 5px;
     background: #fff;
-    box-shadow: 0 5px 23px -7px rgba(163, 185, 197, .77);
-}
-
-.response a {
-    color: #1a17c7;
-}
-
-.blur {
+    box-shadow: 0 5px 23px -7px rgba(163, 185, 197, 0.77); }
+    html .response .accept-response {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: 5px auto; }
+  html .blur {
     position: fixed;
     z-index: 9998;
     top: 0;
@@ -93,31 +95,21 @@ a:hover {
     display: none;
     width: 100%;
     height: 100%;
-    background: rgba(69, 77, 91, 0.6)
-}
-
-.accept-response {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: 5px auto;
-}
-
-.dark {
-    background: #333;
-    color: #fff;
+    background: rgba(69, 77, 91, 0.6); }
+  html .dark {
     padding: 10px;
+    color: #fff;
     border-radius: 10px;
-}
-
-.center {
-    margin-left: auto;
+    background: #333; }
+  html .center {
+    display: block;
     margin-right: auto;
+    margin-left: auto;
     align-self: center;
-}
-.main-title{
-  font-size: 35px;
-  font-weight: bold;
-  text-align: center;
-}
+    text-align: center; }
+  html .main-title {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold; }
+
+/*# sourceMappingURL=main.css.map */
