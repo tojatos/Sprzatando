@@ -1,0 +1,13 @@
+.loading{
+  display: none;
+  position: fixed;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+  right: 0;
+  margin: 5% auto;
+  width: 301px;
+  height: 307px;
+	background-image: url('../images/loading-cube.gif');
+
+}
