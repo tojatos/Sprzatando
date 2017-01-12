@@ -8,6 +8,7 @@ if(!isset($_SESSION))
   <head>
     <link rel="stylesheet" href="<?= base_url() ?>css/mini-reset.css">
     <link rel="stylesheet" href="<?= base_url() ?>css/main.css">
+    <link rel="stylesheet" href="<?= base_url() ?>css/grid.css">
     <link rel="stylesheet" href="<?= base_url() ?>css/loading.css">
     <script src="<?= base_url() ?>js/jquery-3.1.1.min.js"></script>
     <script src="<?= base_url() ?>js/main.js"></script>

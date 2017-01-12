@@ -1,5 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<div class="dark center">404
-  <br>
-  <a href="<?= base_url() ?>">Powrót do strony głównej</a>
+<div class="center-screen">
+  <div class="center">
+    <h1 class="main-title">Ups, chyba zabłądziłeś...</h1>
+    Zawsze możesz powrócić do
+    <a href="<?= base_url() ?>">strony głównej</a>
+  </div>
 </div>
