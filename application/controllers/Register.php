@@ -18,6 +18,9 @@ class Register extends CI_Controller
             if ($password != $password_repeat) {
                 throw new Exception('Hasło różni się od hasła powtórzonego!');
             }
+            $this->load->model('User_model');
+            $try = $this->User_model->createUser($login, $password, $email);
+            if ($try != null) throw new Exception($try);
             echo '<h2>Pomyślnie zarejestrowano.</h2><br>';
             echo 'Po potwierdzeniu wiadomości wysłanej na e-mail będzie można się <a href="'.base_url().'Login">zalogować</a>.';
         } catch (Exception $e) {
