@@ -10,7 +10,7 @@ if (!function_exists('dump')) {
     }
 }
 if (!function_exists('validateForm')) {
-    //przykładowa tablica -  ['Nie zapomnij o e-mail\'u!' => $email]
+    //example array -  ['Nie zapomnij o e-mail\'u!' => $email]
     function validateForm($arr)
     {
         foreach ($arr as $msg => $var) {

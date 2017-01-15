@@ -20,7 +20,8 @@ html {
             background-color: $primary_background_color_1;
         }
 
-        .register_form {
+        .register_form,
+        .login_form {
             width: 480px;
             font-size: 30px;
             margin: 100px auto 0 auto;

@@ -4,20 +4,24 @@ class Main extends CI_Controller
 {
     public function index()
     {
-        $this->load->view('header');
-        $this->load->view('main');
-        $this->load->view('footer');
+      $this->showView('main');
     }
     public function error404()
     {
-        $this->load->view('header');
-        $this->load->view('404');
-        $this->load->view('footer');
+      $this->showView('404');
     }
     public function register()
     {
+      $this->showView('register');
+    }
+    public function login()
+    {
+      $this->showView('login');
+    }
+    private function showView($viewName)
+    {
       $this->load->view('header');
-      $this->load->view('register');
+      $this->load->view($viewName);
       $this->load->view('footer');
     }
 }

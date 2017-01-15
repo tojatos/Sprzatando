@@ -20,7 +20,7 @@ class User_model extends CI_model
           'password' => md5($password),
           'e-mail' => $email,
           'type' => $type,
-          'verifed' => false,
+          'verified' => false,
           'blocked' => false
         );
             $this->db->insert('users', $data);
@@ -30,6 +30,6 @@ class User_model extends CI_model
     }
     public function verify($email)
     {
-      
+
     }
 }
