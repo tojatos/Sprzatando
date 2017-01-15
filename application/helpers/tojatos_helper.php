@@ -5,6 +5,14 @@ if (!function_exists('dump')) {
     function dump($var)
     {
         echo '<pre><code>';
+        var_dump($var);
+        echo '</code></pre>';
+    }
+}
+if (!function_exists('dump_p')) {
+    function dump_p($var)
+    {
+        echo '<pre><code>';
         var_dump(htmlentities($var));
         echo '</code></pre>';
     }
