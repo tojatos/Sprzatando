@@ -1,27 +1,51 @@
 <?php
 
+if (!isset($_SESSION)) {
+    session_start();
+}
 class Main extends CI_Controller
 {
     public function index()
     {
-      $this->showView('main');
+        $this->showMainNavView('main');
     }
     public function error404()
     {
-      $this->showView('404');
+        $this->showView('404');
     }
     public function register()
     {
-      $this->showView('register');
+        $this->showView('register');
     }
     public function login()
     {
-      $this->showView('login');
+        $this->showView('login');
     }
-    private function showView($viewName)
+    public function addOffer()
     {
-      $this->load->view('header');
-      $this->load->view($viewName);
-      $this->load->view('footer');
+        if (!isset($_SESSION['logged'])) {
+            $this->showView('404');
+        } else {
+            $this->showMainNavView('addOffer');
+        }
+    }
+    public function showOffers()
+    {
+        if (!isset($_SESSION['logged'])) {
+            $this->showView('404');
+        } else {
+            $this->showMainNavView('showOffers');
+        }
+    }
+    private function showView($viewName, $data = null)
+    {
+        $this->load->view('header');
+        $this->load->view($viewName, $data);
+        $this->load->view('footer');
+    }
+    private function showMainNavView($viewName)
+    {
+      $data['mainNav'] = $this->load->view('mainNav','',true);
+      $this->showView($viewName, $data);
     }
 }

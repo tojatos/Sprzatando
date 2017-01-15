@@ -5,7 +5,7 @@ if (!function_exists('dump')) {
     function dump($var)
     {
         echo '<pre><code>';
-        var_dump($var);
+        var_dump(htmlentities($var));
         echo '</code></pre>';
     }
 }
