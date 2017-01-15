@@ -1,5 +1,4 @@
 <?php
-
 class Register extends CI_Controller
 {
     public function zarejestruj()
@@ -21,11 +20,25 @@ class Register extends CI_Controller
             $this->load->model('User_model');
             $try = $this->User_model->createUser($login, $password, $email);
             if ($try != null) throw new Exception($try);
+            $this->sendVerifyEmail($email);
             echo '<h2>Pomyślnie zarejestrowano.</h2><br>';
             echo 'Po potwierdzeniu wiadomości wysłanej na e-mail będzie można się <a href="'.base_url().'Login">zalogować</a>.';
         } catch (Exception $e) {
             echo '<h2>Rejestracja nie powiodła się:</h2><br>';
             echo $e->getMessage();
         }
+    }
+    public function sendVerifyEmail($email)
+    {
+      $this->load->library('email');
+      $this->email->from('noreply@'.base_url(), 'Verifier');
+      $this->email->to($email);
+      $this->email->subject('Sprzątando - Weryfikacja');
+      $this->email->message('Potwierdź swoją rejestrację klikając w <a href="'.base_url().md5("hash13".$email).'">ten link</a>');
+      $this->email->send();
+    }
+    public function test()
+    {
+      $this->sendVerifyEmail("tojatos@gmail.com");
     }
 }
