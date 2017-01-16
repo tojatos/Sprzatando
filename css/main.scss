@@ -48,6 +48,9 @@ html {
               font-size: 20px;
             }
           }
+          input{
+            border-radius: 0;
+          }
           input[type="email"],
           input[type="date"],
           input[type="password"],
@@ -59,10 +62,15 @@ html {
           }
 
           input[type="submit"] {
+              cursor: pointer;
+              background-color: #fff;
               width: 100%;
               height: 50px;
               margin: 10px 20px;
               font-size: 20px;
+              &:hover{
+                background-color: #eee;
+              }
           }
           &.register_form{
             margin: 100px auto 0 auto;

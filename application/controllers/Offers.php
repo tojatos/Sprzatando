@@ -1,10 +1,17 @@
 <?php
 
+if (!isset($_SESSION)) {
+    session_start();
+}
 class Offers extends CI_Controller
 {
     public function addOffer()
     {
         try {
+            if (!isset($_SESSION['logged'])) {
+                throw new Exception('Aby dodać ofertę musisz być zalogowany!');
+            }
+
             $date = $this->input->post('date');
             $time = $this->input->post('time');
             $phone = $this->input->post('phone');
@@ -50,4 +57,22 @@ class Offers extends CI_Controller
     // {
     //   $this->sendVerifyEmail("tojatos@gmail.com");
     // }
+    public function showOffers()
+    {
+        if (!isset($_SESSION['logged'])) {
+            $this->showView('404');
+        } else {
+            $this->load->model('Offers_model');
+            $offers = $this->Offers_model->getOffers();
+            $data['mainNav'] = $this->load->view('mainNav', '', true);
+            $data['offers'] = $offers;
+            $this->showView('showOffers', $data);
+        }
+    }
+    private function showView($viewName, $data = null)
+    {
+        $this->load->view('header');
+        $this->load->view($viewName, $data);
+        $this->load->view('footer');
+    }
 }

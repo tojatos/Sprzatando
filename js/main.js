@@ -54,7 +54,20 @@ $(function() {
    hideResponse();
   }
  });
-
+ // $('.offers_container').on('click', function () {
+ //   alert('test');
+ //   $.ajax({
+ //    url: baseUrl + 'Offers/showOffers',
+ //    type: 'POST',
+ //    data: data,
+ //    success: function(serverResponse) {
+ //     $('.offers_container').text(serverResponse);
+ //    },
+ //    error: function() {
+ //     $('.offers_container').text('Błąd związany z wysyłaniem danych.<br>Sprawdź swoje połączenie internetowe.');
+ //    }
+ //   });
+ // });
  sendPostDataOnSubmit('.login_form', 'Login/zaloguj', true);
  sendPostDataOnSubmit('.logout_form', 'Login/wyloguj', true);
  sendPostDataOnSubmit('.register_form', 'Register/zarejestruj');

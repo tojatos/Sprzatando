@@ -13,12 +13,18 @@ class Offers_model extends CI_model
             $this->load->database();
             $rooms_id = $this->getNextID('rooms');
             $todos_id = $this->getNextID('todos');
-            foreach ($rooms as $key => $value) {
-              $roomsData[$value] = true;
+            if ($rooms != null) {
+                foreach ($rooms as $key => $value) {
+                    $roomsData[$value] = true;
+                }
             }
-            foreach ($todos as $key => $value) {
-              $todosData[$value] = true;
+            $roomsData['id'] = $rooms_id;
+            if ($todos != null) {
+                foreach ($todos as $key => $value) {
+                    $todosData[$value] = true;
+                }
             }
+            $todosData['id'] = $todos_id;
             $offersData = array(
               'datetime' => $datetime,
               'phone' => $phone,
@@ -38,12 +44,23 @@ class Offers_model extends CI_model
     }
     private function getNextID($table)
     {
-      $this->load->database();
-      $maxid = 0;
-      $row = $this->db->query('SELECT MAX(id) AS maxid FROM '.$table)->row();
-      if ($row) {
-          $maxid = $row->maxid;
-      }
-      return $maxid+1;
+        $this->load->database();
+        $maxid = 0;
+        $row = $this->db->query('SELECT MAX(id) AS maxid FROM '.$table)->row();
+        if ($row) {
+            $maxid = $row->maxid;
+        }
+
+        return $maxid + 1;
+    }
+    public function getOffers()
+    {
+        $this->load->database();
+        $query = $this->db->query('select * from offers join rooms on offers.rooms = rooms.id join todos on offers.todos = todos.id;');
+        if ($query->result() == null) {
+          return null;
+        } else {
+          return $query->result();
+        }
     }
 }

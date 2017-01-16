@@ -29,14 +29,6 @@ class Main extends CI_Controller
             $this->showMainNavView('addOffer');
         }
     }
-    public function showOffers()
-    {
-        if (!isset($_SESSION['logged'])) {
-            $this->showView('404');
-        } else {
-            $this->showMainNavView('showOffers');
-        }
-    }
     private function showView($viewName, $data = null)
     {
         $this->load->view('header');

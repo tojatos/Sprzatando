@@ -1,8 +1,22 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <main>
 <h1 class="main-title">Pokaż oferty</h1>
 <div class="row">
-  <div class="col-xs-8"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  <div class="col-xs-8">
+    <section class="offers_container">
+      <?php if ($offers == null): ?>
+          W tej chwili nie ma żadnych ofert!<br>
+      <?php else: ?>
+        <?php foreach ($offers as $offer): ?>
+          <a href="<?= base_url() ?>Offer/<?= $offer->id ?>"><div class="offer">
+            <ul>
+              <li>Data: <?= $offer->datetime ?></li>
+              <li>Miejsce: <?= $offer->place ?></li>
+            </ul>
+          </div></a>
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </section>
   </div>
   <div class="col-xs-4">
     <?= $mainNav ?>
