@@ -8,12 +8,15 @@
           W tej chwili nie ma żadnych ofert!<br>
       <?php else: ?>
         <?php foreach ($offers as $offer): ?>
-          <a href="<?= base_url() ?>Offer/<?= $offer->id ?>"><div class="offer">
+          <?php if(date_create($offer->datetime)>date_create('now')):?>
+          <a href="<?= base_url() ?>Offer/<?= $offer->id ?> "class="offer">
             <ul>
-              <li>Data: <?= $offer->datetime ?></li>
+              <li>Czas: <?= $offer->datetime ?></li>
               <li>Miejsce: <?= $offer->place ?></li>
+              <li>Cena: <?= $offer->price ?>zł</li>
             </ul>
-          </div></a>
+          </a>
+          <?php endif; ?>
         <?php endforeach; ?>
       <?php endif; ?>
     </section>

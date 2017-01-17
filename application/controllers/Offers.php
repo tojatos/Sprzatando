@@ -69,6 +69,22 @@ class Offers extends CI_Controller
             $this->showView('showOffers', $data);
         }
     }
+    public function showOffer($id)
+    {
+      if($id!=intval($id)) {
+        $data['message'] = "Nie ma takiej oferty w bazie";
+        $this->showView('show_error', $data);
+      }
+      else if (!isset($_SESSION['logged'])) {
+          $this->showView('404');
+      } else {
+          $this->load->model('Offers_model');
+          $offer = $this->Offers_model->getOffer($id);
+          $data['mainNav'] = $this->load->view('mainNav', '', true);
+          $data['offer'] = $offer;
+          $this->showView('showOffer', $data);
+      }
+    }
     private function showView($viewName, $data = null)
     {
         $this->load->view('header');

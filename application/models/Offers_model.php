@@ -56,11 +56,21 @@ class Offers_model extends CI_model
     public function getOffers()
     {
         $this->load->database();
-        $query = $this->db->query('select * from offers join rooms on offers.rooms = rooms.id join todos on offers.todos = todos.id;');
+        $query = $this->db->query('select offers.id, datetime, place, price, bathroom, kitchen, living_room, bedroom, clean_car, clean_windows from offers join rooms on offers.rooms = rooms.id join todos on offers.todos = todos.id;');
         if ($query->result() == null) {
           return null;
         } else {
           return $query->result();
+        }
+    }
+    public function getOffer($id)
+    {
+        $this->load->database();
+        $query = $this->db->query('select offers.id, datetime, place, price, email, phone, bathroom, kitchen, living_room, bedroom, clean_car, clean_windows from offers join rooms on offers.rooms = rooms.id join todos on offers.todos = todos.id where offers.id = '.$id.' limit 1;');
+        if ($query->result() == null) {
+          return null;
+        } else {
+          return $query->result()[0];
         }
     }
 }

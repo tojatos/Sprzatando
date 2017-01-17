@@ -39,10 +39,10 @@ html {
           font-size: 20px; }
       html body .form input {
         border-radius: 0; }
-      html body .form input[type="email"],
       html body .form input[type="date"],
-      html body .form input[type="password"],
+      html body .form input[type="email"],
       html body .form input[type="number"],
+      html body .form input[type="password"],
       html body .form input[type="text"] {
         display: block;
         width: 300px;
@@ -57,10 +57,10 @@ html {
         html body .form input[type="submit"]:hover {
           background-color: #eee; }
       html body .form.register_form {
-        margin: 100px auto 0 auto; }
+        margin: 100px auto 0; }
       html body .form.login_form {
         width: 400px;
-        margin: 100px auto 0 auto; }
+        margin: 100px auto 0; }
         html body .form.login_form .input {
           width: 380px; }
         html body .form.login_form label {
@@ -68,6 +68,16 @@ html {
       html body .form.offer_form {
         margin: 0 auto;
         border: none; }
+    html body .offer {
+      display: block;
+      color: #fff;
+      background-color: #a85a27;
+      margin: 5px 0;
+      border: 3px solid #000;
+      padding: 5px; }
+      html body .offer:hover {
+        text-decoration: none;
+        background-color: #974916; }
   html a {
     text-decoration: none;
     color: #0057ff; }
