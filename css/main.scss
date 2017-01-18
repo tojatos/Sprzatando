@@ -1,10 +1,13 @@
-$primary_color_1: #000;
-$primary_background_color_1: #fff8c6;
+$color_1: #000;
+$color_2: #fff;
+$background_1: url('../Images/dark_wood.png');
+$background_2: url('../Images/shl.png');
+$background_3: url('../Images/footer_lodyas.png');
 
 html {
     cursor: default;
-    color: #000;
-    background-color: #fff;
+    color: $color_1;
+    background: $background_1;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
 
@@ -14,16 +17,18 @@ html {
         main {
             margin: 0 50px;
             padding: 5px 10px;
-            border-right: 1px dotted $primary_color_1;
-            border-bottom: 1px dotted $primary_color_1;
-            border-left: 1px dotted $primary_color_1;
-            background-color: $primary_background_color_1;
+            border-right: 1px dotted $color_1;
+            border-bottom: 1px dotted $color_1;
+            border-left: 1px dotted $color_1;
+            background: $background_2;
         }
 
         .form {
             font-size: 30px;
             width: 480px;
             border: 1px solid black;
+            background: $background_2;
+            padding: 10px 5px;
 
             .input {
                 display: flex;
@@ -83,12 +88,12 @@ html {
             }
 
             &.register_form {
-                margin: 100px auto 0;
+                margin: 100px auto 10px;
             }
 
             &.login_form {
                 width: 400px;
-                margin: 100px auto 0;
+                margin: 100px auto 10px;
 
                 .input {
                     width: 380px;
@@ -107,8 +112,8 @@ html {
 
         .offer {
             display: block;
-            color: #fff;
-            background-color: #a85a27;
+            color: $color_2;
+            background: $background_3;
             margin: 5px 0;
             border: 3px solid #000;
             padding: 5px;
@@ -222,9 +227,14 @@ html {
     }
 
     .main-title {
+        display: block;
         text-align: center;
         font-size: 35px;
         font-weight: bold;
+        color: $color_2;
+        background: $background_1;
+        margin: 5px auto;
+        padding: 10px;
     }
 
     .center-screen {
