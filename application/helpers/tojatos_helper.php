@@ -25,7 +25,8 @@ if (!function_exists('validateForm')) {
             if ($var == null) {
                 throw new Exception($msg);
             }
-            if (htmlentities($var, ENT_QUOTES, 'UTF-8') != $var) {
+
+            if (strpos($var, '"') !== false||strpos($var, "'") !== false) {
                 throw new Exception("Proszę usunąć apostrofy i cudzysłowia!");
             }
         }
