@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 16, 2017 at 12:09 AM
+-- Generation Time: Jan 18, 2017 at 08:07 PM
 -- Server version: 5.7.16-0ubuntu0.16.04.1-log
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -43,7 +43,12 @@ CREATE TABLE `offers` (
 --
 
 INSERT INTO `offers` (`id`, `datetime`, `phone`, `email`, `place`, `price`, `rooms`, `todos`, `user`) VALUES
-(2, '2017-01-15 21:37:00', '123456789', 'f@email.com', 'ul. Testowa', 233, 1, 1, 'tojatos');
+(4, '2017-01-16 21:37:00', '123456789', 'f@email.com', 'ul. Testowa', 343, 1, 1, 'tojatos'),
+(5, '2017-01-16 12:34:00', '2353', 'f@email.com', 'ul. Testowa', 343, 2, 2, 'tojatos'),
+(6, '2017-01-16 12:34:00', '2353', 'f@email.com', 'ul. Testowa', 343, 3, 3, 'tojatos'),
+(7, '2017-01-17 13:00:00', '2145', 'tojatos@interia.pl', 'twitch chat', 0, 4, 4, 'tojatos'),
+(8, '2017-01-17 13:00:00', '2145', 'tojatos@interia.pl', 'twitch chat', 0, 5, 5, 'tojatos'),
+(9, '2017-01-17 13:00:00', '2145', 'tojatos@interia.pl', 'twitch chat', 0, 6, 6, 'tojatos');
 
 -- --------------------------------------------------------
 
@@ -64,7 +69,12 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`id`, `bathroom`, `kitchen`, `living_room`, `bedroom`) VALUES
-(3, 1, 0, 1, 1);
+(1, 1, 1, 0, 0),
+(2, 0, 0, 0, 0),
+(3, 0, 0, 0, 0),
+(4, 1, 1, 1, 1),
+(5, 0, 0, 0, 0),
+(6, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -83,7 +93,12 @@ CREATE TABLE `todos` (
 --
 
 INSERT INTO `todos` (`id`, `clean_car`, `clean_windows`) VALUES
-(2, 0, 1);
+(1, 1, 0),
+(2, 1, 1),
+(3, 1, 1),
+(4, 1, 1),
+(5, 1, 1),
+(6, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -146,17 +161,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `todos`
 --
 ALTER TABLE `todos`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `users`
 --
