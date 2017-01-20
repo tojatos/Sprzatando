@@ -874,16 +874,17 @@ html {
     margin-left: auto;
     align-self: center;
     text-align: center; }
-  html .main-title {
+  html .h1 {
     display: block;
     text-align: center;
     font-weight: bold;
     color: #fff;
     background: url("../Images/dark_wood.png");
     margin: 5px auto;
-    padding: 10px; }
-    html .main-titleh1 {
-      font-size: 35px; }
+    padding: 10px;
+    font-size: 35px; }
+  html .h2 {
+    font-size: 30px; }
   html .center-screen {
     display: flex;
     height: 95vh;

@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <main>
-  <h1 class="main-title">Dodaj ofertę</h1>
+  <h1 class="h1">Dodaj ofertę</h1>
   <div class="row">
     <div class="col-xs-10">
       <form class="form offer_form" method="post">

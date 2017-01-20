@@ -228,7 +228,7 @@ html {
         text-align: center;
     }
 
-    .main-title {
+    .h1 {
         display: block;
         text-align: center;
         font-weight: bold;
@@ -236,9 +236,10 @@ html {
         background: $background_1;
         margin: 5px auto;
         padding: 10px;
-        &h1 {
-          font-size: 35px;
-        }
+        font-size: 35px;
+    }
+    .h2 {
+      font-size: 30px;
     }
 
     .center-screen {

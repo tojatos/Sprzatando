@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <main>
-<h1 class="main-title">Pokaż oferty</h1>
+<h1 class="h1">Pokaż oferty</h1>
 <div class="row">
   <div class="col-xs-10">
     <section class="offer_container">
