@@ -1,3 +1,7 @@
+@import 'mini-reset';
+@import 'grid';
+@import 'loading';
+
 $color_1: #000;
 $color_2: #fff;
 $background_1: url('../Images/dark_wood.png');
@@ -6,7 +10,7 @@ $background_3: url('../Images/footer_lodyas.png');
 
 html {
     cursor: default;
-    color: $color_1;
+    color: $color_2;
     background: $background_1;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
@@ -17,10 +21,8 @@ html {
         main {
             margin: 0 50px;
             padding: 5px 10px;
-            border-right: 1px dotted $color_1;
-            border-bottom: 1px dotted $color_1;
-            border-left: 1px dotted $color_1;
             background: $background_2;
+            color: $color_1;
         }
 
         .form {
@@ -28,6 +30,7 @@ html {
             width: 480px;
             border: 1px solid black;
             background: $background_2;
+            color: $color_1;
             padding: 10px 5px;
 
             .input {
@@ -137,38 +140,37 @@ html {
         display: block;
         width: 100%;
         margin: 5px;
-        padding: 10px 30px;
+        padding: 13px 30px;
         cursor: pointer;
         transition: 0.3s ease-in;
         text-align: center;
         text-decoration: none;
         border: none;
-        border-radius: 5px;
         font-size: 100%;
+        color: white;
+        height: 50px;
 
         &:hover {
             text-decoration: none;
         }
 
         &.green-btn {
-            width: 300px;
-            height: 50px;
-            color: white;
             background-color: #4CAF50;
-
             &:hover {
-                color: #000;
+                background-color: #5DBF61;
             }
         }
 
         &.black-btn {
-            width: 200px;
-            height: 50px;
-            color: white;
             background-color: #000;
-
             &:hover {
-                color: white;
+                background-color: #111;
+            }
+        }
+        &.purple-btn {
+            background-color: #6d0ccd;
+            &:hover {
+                background-color: #7e1dde;
             }
         }
     }
@@ -229,17 +231,22 @@ html {
     .main-title {
         display: block;
         text-align: center;
-        font-size: 35px;
         font-weight: bold;
         color: $color_2;
         background: $background_1;
         margin: 5px auto;
         padding: 10px;
+        &h1 {
+          font-size: 35px;
+        }
     }
 
     .center-screen {
         display: flex;
         height: 95vh;
         align-items: center;
+    }
+    .info{
+        border: 1px dashed $color_2;
     }
 }

@@ -2,7 +2,7 @@
 <main>
   <h1 class="main-title">Dodaj ofertę</h1>
   <div class="row">
-    <div class="col-xs-8">
+    <div class="col-xs-10">
       <form class="form offer_form" method="post">
         <div class="input"><label>Data:</label><input type="date" name="date" value="<?= date('Y-m-d') ?>"></div>
         <div class="input"><label>Czas:</label><input type="text" name="time" value="" placeholder="<?=date('H:i')?>"></div>
@@ -21,7 +21,7 @@
         <div class="input"><input type="submit" value="Dodaj ofertę"></div>
       </form>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-2">
       <?= $mainNav ?>
     </div>
   </div>

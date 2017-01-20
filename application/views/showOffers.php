@@ -2,7 +2,7 @@
 <main>
 <h1 class="main-title">Pokaż oferty</h1>
 <div class="row">
-  <div class="col-xs-8">
+  <div class="col-xs-10">
     <section class="offers_container">
       <?php if ($offers == null): ?>
           W tej chwili nie ma żadnych ofert!<br>
@@ -21,7 +21,7 @@
       <?php endif; ?>
     </section>
   </div>
-  <div class="col-xs-4">
+  <div class="col-xs-2">
     <?= $mainNav ?>
   </div>
 </div>
