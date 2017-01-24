@@ -1,5 +1,5 @@
 <?php
-
+defined('BASEPATH') or exit('No direct script access allowed');
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -31,9 +31,9 @@ class Main extends CI_Controller
     }
     private function showView($viewName, $data = null)
     {
-        $this->load->view('header');
+        $this->load->view('inc/header');
         $this->load->view($viewName, $data);
-        $this->load->view('footer');
+        $this->load->view('inc/footer');
     }
     private function showMainNavView($viewName)
     {

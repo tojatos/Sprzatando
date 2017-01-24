@@ -10,7 +10,7 @@ class Offers_model extends CI_model
     {
         try {
             $datetime = $date.' '.$time;
-            $this->load->database();
+
             $rooms_id = $this->getNextID('rooms');
             $todos_id = $this->getNextID('todos');
             if ($rooms != null) {
@@ -44,7 +44,7 @@ class Offers_model extends CI_model
     }
     private function getNextID($table)
     {
-        $this->load->database();
+
         $maxid = 0;
         $row = $this->db->query('SELECT MAX(id) AS maxid FROM '.$table)->row();
         if ($row) {
@@ -55,7 +55,7 @@ class Offers_model extends CI_model
     }
     public function getOffers()
     {
-        $this->load->database();
+        //
         $query = $this->db->query('select offers.id, datetime, place, price, bathroom, kitchen, living_room, bedroom, clean_car, clean_windows from offers join rooms on offers.rooms = rooms.id join todos on offers.todos = todos.id;');
         if ($query->result() == null) {
           return null;
@@ -65,8 +65,8 @@ class Offers_model extends CI_model
     }
     public function getOffer($id)
     {
-        $this->load->database();
-        $query = $this->db->query('select offers.id, datetime, place, price, email, phone, bathroom, kitchen, living_room, bedroom, clean_car, clean_windows from offers join rooms on offers.rooms = rooms.id join todos on offers.todos = todos.id where offers.id = '.$id.' limit 1;');
+
+        $query = $this->db->query('select offers.id, datetime, place, price, email, phone, bathroom, kitchen, living_room, bedroom, clean_car, clean_windows, user from offers join rooms on offers.rooms = rooms.id join todos on offers.todos = todos.id where offers.id = '.$id.' limit 1;');
         if ($query->result() == null) {
           return null;
         } else {

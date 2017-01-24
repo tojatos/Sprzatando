@@ -9,8 +9,7 @@ class Login_model extends CI_model
     public function login($login, $password)
     {
         try {
-            $this->load->database();
-            $result = $this->db->get_where('users', array('login' => $login, 'password' => md5($password)), 1);
+            $result = $this->db->get_where('users', array('login' => $login, 'password' => sha1($password.HASH_KEY)), 1);
             if ($result->result() == null) {
                 throw new Exception('Nieprawidłowe dane logowania.<br>');
             }

@@ -6,9 +6,9 @@ if(!isset($_SESSION))
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="<?= base_url() ?>css/main.css">
-    <script src="<?= base_url() ?>js/jquery-3.1.1.min.js"></script>
-    <script src="<?= base_url() ?>js/main.js"></script>
+    <link rel="stylesheet" href="<?= site_url('public/css/main.css') ?>">
+    <script src="<?= site_url('public/js/jquery-3.1.1.min.js') ?>"></script>
+    <script src="<?= site_url('public/js/main.js') ?>"></script>
     <meta charset="utf-8">
     <title>Sprzątando</title>
   </head>

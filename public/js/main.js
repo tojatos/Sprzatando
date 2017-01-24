@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 var baseUrl = "http://localhost/Sprzatando/";
 $(document).ajaxStart(function() {
  $(".loading").delay(1000).show(0); //jeżeli ajax się nie wykona po 1 sekundzie, pokaż loading

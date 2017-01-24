@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
 class Register extends CI_Controller
 {
     public function zarejestruj()
@@ -22,7 +23,7 @@ class Register extends CI_Controller
             if ($try != null) throw new Exception($try);
             //$this->sendVerifyEmail($email); TODO
             echo '<h2>Pomyślnie zarejestrowano.</h2><br>';
-            echo 'Po potwierdzeniu wiadomości wysłanej na e-mail będzie można się <a href="'.base_url().'Login">zalogować</a>.';
+            echo 'Po potwierdzeniu wiadomości wysłanej na e-mail będzie można się <a href="'.site_url('Login').'">zalogować</a>.';
         } catch (Exception $e) {
             echo '<h2>Rejestracja nie powiodła się:</h2><br>';
             echo $e->getMessage();

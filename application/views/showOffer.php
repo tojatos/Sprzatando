@@ -23,6 +23,7 @@
             <li>Cena: <?= $offer->price ?>zł</li>
             <li>Email: <?= $offer->email ?></li>
             <li>Numer telefonu: <?= $offer->phone ?></li>
+            <li>User: <?= $offer->user ?></li>
             <?php if(array_sum($rooms)!=0): ?>
             <li>Pokoje do sprzątania:
               <ul>
