@@ -7,71 +7,72 @@ $background_1: url('../images/dark_wood.png');
 $background_2: url('../images/shl.png');
 $background_3: url('../images/footer_lodyas.png');
 @mixin generateForm($width) {
-  width: $width;
-  padding: 10px 5px;
-  color: $color_1;
-  border: 1px solid black;
-  background: $background_2;
-  font-size: 30px;
+    width: $width;
+    padding: 10px 5px;
+    color: $color_1;
+    border: 1px solid black;
+    background: $background_2;
+    font-size: 30px;
 
-  .input {
-      display: flex;
-      width: $width - 30px;
-      margin: 5px 10px;
+    .input {
+        display: flex;
+        width: $width - 30px;
+        margin: 5px 10px;
 
-      label {
-          display: block;
-          width: $width - 330px;
-          font-size: 20px;
-      }
-  }
+        label {
+            display: block;
+            width: $width - 330px;
+            font-size: 20px;
+        }
+    }
 
-  >label {
-      display: flex;
-      width: 460px;
-      margin: 0 10px;
+    > label {
+        display: flex;
+        width: 460px;
+        margin: 0 10px;
 
-      input[type="checkbox"] {
-          display: block;
-          width: 27px;
-          height: 27px;
-      }
+        input[type="checkbox"] {
+            display: block;
+            width: 27px;
+            height: 27px;
+        }
 
-      span {
-          display: block;
-          width: 410px;
-          font-size: 20px;
-      }
-  }
+        span {
+            display: block;
+            width: 410px;
+            font-size: 20px;
+        }
+    }
 
-  input {
-      border-radius: 0;
-  }
 
-  input[type="date"],
-  input[type="email"],
-  input[type="number"],
-  input[type="password"],
-  input[type="text"],
-  input[type="textarea"] {
-      display: block;
-      width: 300px;
-      margin: 0 10px;
-  }
+    input[type="date"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"],
+    input[type="text"],
+    textarea {
+        border-radius: 0;
+        display: block;
+        width: 300px;
+        margin: 0;
+        min-width: 300px;
+        max-width: 300px;
+    }
 
-  input[type="submit"] {
-      width: 100%;
-      height: 50px;
-      margin: 10px 20px;
-      cursor: pointer;
-      background-color: #fff;
-      font-size: 20px;
+    input[type="submit"] {
+        width: 100%;
+        height: 50px;
+        margin: 10px 20px;
+        cursor: pointer;
+        background-color: #fff;
+        font-size: 20px;
 
-      &:hover {
-          background-color: #eee;
-      }
-  }
+        &:hover {
+            background-color: #eee;
+        }
+    }
 }
+
 html {
     cursor: default;
     color: $color_2;
@@ -89,17 +90,15 @@ html {
             background: $background_2;
         }
 
-            a {
-                text-decoration: none;
-                color: rgb(0, 87, 255);
+        a {
+            text-decoration: none;
+            color: rgb(0, 87, 255);
 
-                &:hover {
-                    text-decoration: underline;
-                }
+            &:hover {
+                text-decoration: underline;
             }
-        .form {
-            @include generateForm(480px);
         }
+
         .register_form {
             @include generateForm(480px);
             margin: 100px auto 10px;
@@ -114,6 +113,7 @@ html {
             @include generateForm(480px);
             margin: 0 auto;
         }
+
         .participate_form {
             @include generateForm(520px);
             margin: 0 auto;
@@ -133,7 +133,6 @@ html {
             }
         }
     }
-
 
     .btn {
         display: block;
