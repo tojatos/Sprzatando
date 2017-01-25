@@ -3,7 +3,7 @@
   <h1 class="h1">Dodaj ofertę</h1>
   <div class="row">
     <div class="col-xs-10">
-      <form class="form offer_form" method="post">
+      <form class="offer_form" method="post">
         <div class="input"><label>Data:</label><input type="date" name="date" value="<?= date('Y-m-d') ?>"></div>
         <div class="input"><label>Czas:</label><input type="text" name="time" value="" placeholder="<?=date('H:i')?>"></div>
         <div class="input"><label>Telefon:</label><input type="text" name="phone" value="" placeholder="123456789"></div>

@@ -1,19 +1,81 @@
 @import 'mini-reset';
 @import 'grid';
 @import 'loading';
-
 $color_1: #000;
 $color_2: #fff;
 $background_1: url('../images/dark_wood.png');
 $background_2: url('../images/shl.png');
 $background_3: url('../images/footer_lodyas.png');
+@mixin generateForm($width) {
+  width: $width;
+  padding: 10px 5px;
+  color: $color_1;
+  border: 1px solid black;
+  background: $background_2;
+  font-size: 30px;
 
+  .input {
+      display: flex;
+      width: $width - 30px;
+      margin: 5px 10px;
+
+      label {
+          display: block;
+          width: $width - 330px;
+          font-size: 20px;
+      }
+  }
+
+  >label {
+      display: flex;
+      width: 460px;
+      margin: 0 10px;
+
+      input[type="checkbox"] {
+          display: block;
+          width: 27px;
+          height: 27px;
+      }
+
+      span {
+          display: block;
+          width: 410px;
+          font-size: 20px;
+      }
+  }
+
+  input {
+      border-radius: 0;
+  }
+
+  input[type="date"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input[type="text"],
+  input[type="textarea"] {
+      display: block;
+      width: 300px;
+      margin: 0 10px;
+  }
+
+  input[type="submit"] {
+      width: 100%;
+      height: 50px;
+      margin: 10px 20px;
+      cursor: pointer;
+      background-color: #fff;
+      font-size: 20px;
+
+      &:hover {
+          background-color: #eee;
+      }
+  }
+}
 html {
     cursor: default;
-
     color: $color_2;
     background: $background_1;
-
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
 
@@ -23,156 +85,68 @@ html {
         main {
             margin: 0 50px;
             padding: 5px 10px;
-
             color: $color_1;
             background: $background_2;
         }
 
-        .form {
-            width: 480px;
-            padding: 10px 5px;
-
-            color: $color_1;
-            border: 1px solid black;
-            background: $background_2;
-
-            font-size: 30px;
-
-            .input {
-                display: flex;
-
-                width: 460px;
-                margin: 5px 10px;
-
-                label {
-                    display: block;
-
-                    width: 140px;
-
-                    font-size: 20px;
-                }
-            }
-
-            label {
-                display: flex;
-
-                width: 460px;
-                margin: 0 10px;
-
-                input[type="checkbox"] {
-                    display: block;
-
-                    width: 27px;
-                    height: 27px;
-                }
-
-                span {
-                    display: block;
-
-                    width: 410px;
-
-                    font-size: 20px;
-                }
-            }
-
-            input {
-                border-radius: 0;
-            }
-
-            input[type="date"],
-            input[type="email"],
-            input[type="number"],
-            input[type="password"],
-            input[type="text"] {
-                display: block;
-
-                width: 300px;
-                margin: 0 10px;
-            }
-
-            input[type="submit"] {
-                width: 100%;
-                height: 50px;
-                margin: 10px 20px;
-
-                cursor: pointer;
-
-                background-color: #fff;
-
-                font-size: 20px;
+            a {
+                text-decoration: none;
+                color: rgb(0, 87, 255);
 
                 &:hover {
-                    background-color: #eee;
+                    text-decoration: underline;
                 }
             }
+        .form {
+            @include generateForm(480px);
+        }
+        .register_form {
+            @include generateForm(480px);
+            margin: 100px auto 10px;
+        }
 
-            &.register_form {
-                margin: 100px auto 10px;
-            }
+        .login_form {
+            @include generateForm(380px);
+            margin: 100px auto 10px;
+        }
 
-            &.login_form {
-                width: 400px;
-                margin: 100px auto 10px;
-
-                .input {
-                    width: 380px;
-                }
-
-                label {
-                    width: 60px;
-                }
-            }
-
-            &.offer_form {
-                margin: 0 auto;
-
-                border: none;
-            }
+        .offer_form {
+            @include generateForm(480px);
+            margin: 0 auto;
+        }
+        .participate_form {
+            @include generateForm(520px);
+            margin: 0 auto;
         }
 
         .offer {
             display: block;
-
             margin: 5px 0;
             padding: 5px;
-
             color: $color_2;
             border: 3px solid #000;
             background: $background_3;
-            &:hover{
-              text-decoration: none;
 
-              background-color: #974916;
+            &:hover {
+                text-decoration: none;
+                background-color: #974916;
             }
         }
     }
 
-    a {
-        text-decoration: none;
-
-        color: rgb(0, 87, 255);
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
 
     .btn {
         display: block;
-
         width: 100%;
         height: 50px;
         margin: 5px;
         padding: 13px 30px;
-
         cursor: pointer;
         transition: 0.3s ease-in;
         text-align: center;
         text-decoration: none;
-
         color: white;
         border: none;
-
         font-size: 100%;
 
         &:hover {
@@ -181,6 +155,7 @@ html {
 
         &.green-btn {
             background-color: #4CAF50;
+
             &:hover {
                 background-color: #5DBF61;
             }
@@ -188,12 +163,15 @@ html {
 
         &.black-btn {
             background-color: #000;
+
             &:hover {
                 background-color: #111;
             }
         }
+
         &.purple-btn {
             background-color: #6d0ccd;
+
             &:hover {
                 background-color: #7e1dde;
             }
@@ -206,15 +184,12 @@ html {
         top: 15%;
         right: 0;
         left: 0;
-
         display: none;
-
         max-width: 50%;
         min-height: 200px;
         max-height: 70%;
         margin: 0 auto;
         padding: 15px 30px 60px;
-
         color: #000;
         border-radius: 5px;
         background: #fff;
@@ -225,7 +200,8 @@ html {
             right: 0;
             bottom: 0;
             left: 0;
-
+            width: 300px;
+            border-radius: 5px;
             margin: 5px auto;
         }
     }
@@ -236,18 +212,14 @@ html {
         top: 0;
         right: 0;
         left: 0;
-
         display: none;
-
         width: 100%;
         height: 100%;
-
         background: rgba(69, 77, 91, 0.6);
     }
 
     .dark {
         padding: 10px;
-
         color: #fff;
         border-radius: 10px;
         background: #333;
@@ -255,41 +227,34 @@ html {
 
     .center {
         display: block;
-
         margin-right: auto;
         margin-left: auto;
-
         text-align: center;
-
         align-self: center;
     }
 
     .h1 {
         display: block;
-
         margin: 5px auto;
         padding: 10px;
-
         text-align: center;
-
         color: $color_2;
         background: $background_1;
-
         font-size: 35px;
         font-weight: bold;
     }
+
     .h2 {
-      font-size: 30px;
+        font-size: 30px;
     }
 
     .center-screen {
         display: flex;
-
         height: 95vh;
-
         align-items: center;
     }
-    .info{
+
+    .info {
         border: 1px dashed $color_2;
     }
 }

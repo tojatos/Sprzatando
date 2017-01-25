@@ -42,6 +42,15 @@
             </li>
           <?php endif; ?>
           </ul>
+          <?php if($offer->user != $this->session->user_name): ?>
+          <form class="participate_form" method="post">
+            <div class="input"><label>Proponowana cena:</label><input type="number" name="price" value=""></div>
+            <div class="input"><label>Opis:</label><input type="textarea" name="text" value="" placeholder="Opisz swoją propozycję"></div>
+            <div class="input"><input type="submit" value="Zgłoś się do oferty"></div>
+          </form>
+          <?php else: ?>
+            <a class="btn black-btn center" href="<?= site_url('Applications/'.$offer->id) ?>">Zobacz zgłoszenia</a>
+          <?php endif; ?>
     </section>
   </div>
   <div class="col-xs-2">

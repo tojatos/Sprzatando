@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <h1 class="h1">Sprzątando</h1>
-<form class="form register_form" method="post">
+<form class="register_form" method="post">
   <h2 class="center">Formularz rejestracji</h2>
   <div class="input"><label>E-mail:</label><input type="email" name="email" value="" placeholder="example@mail.com"></div>
   <div class="input"><label>Login:</label><input type="text" name="login" value="" placeholder="login"></div>
