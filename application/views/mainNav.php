@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <a href="<?= site_url() ?>" class="btn purple-btn center">Strona główna</a>
-<?php if (!isset($_SESSION['logged'])): ?>
+<?php if (!$this->session->logged): ?>
   <a href="<?= site_url('Register') ?>" class="btn black-btn center">Zarejestruj się</a>
   <a href="<?= site_url('Login') ?>" class="btn green-btn center">Zaloguj się</a>
 <?php else: ?>

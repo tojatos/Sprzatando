@@ -1,8 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-if (!isset($_SESSION)) {
-    session_start();
-}
 class Main extends CI_Controller
 {
     public function index()
@@ -23,7 +20,7 @@ class Main extends CI_Controller
     }
     public function addOffer()
     {
-        if (!isset($_SESSION['logged'])) {
+        if (!$this->session->logged) {
             $this->showView('404');
         } else {
             $this->showMainNavView('addOffer');

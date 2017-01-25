@@ -5,7 +5,7 @@
 <div class="col-xs-10">
   <h2 class="h2">Witaj na naszym serwisie aukcyjnym!</h2>
   <p>Sprzątando to platforma łącząca ludzi posiadających srogie hacjendy z ludźmi mającymi ręce i minimum zdolności manualnych, żeby posprzątać.</p>
-  <?php if (!isset($_SESSION['logged'])): ?>
+  <?php if (!$this->session->logged): ?>
   <p>Aby korzystać z serwisu, musisz się <a href="<?= site_url('Login') ?>">zalogować</a>.</p>
   <?php endif; ?>
 </div>

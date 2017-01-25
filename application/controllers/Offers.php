@@ -1,14 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-if (!isset($_SESSION)) {
-    session_start();
-}
 class Offers extends CI_Controller
 {
     public function addOffer()
     {
         try {
-            if (!isset($_SESSION['logged'])) {
+            if (!$this->session->logged) {
                 throw new Exception('Aby dodać ofertę musisz być zalogowany!');
             }
 
@@ -59,7 +56,7 @@ class Offers extends CI_Controller
     // }
     public function showOffers()
     {
-        if (!isset($_SESSION['logged'])) {
+        if (!$this->session->logged) {
             $this->showView('404');
         } else {
             $this->load->model('Offers_model');
@@ -75,7 +72,7 @@ class Offers extends CI_Controller
         $data['message'] = "Nie ma takiej oferty w bazie";
         $this->showView('show_error', $data);
       }
-      else if (!isset($_SESSION['logged'])) {
+      else if (!$this->session->logged) {
           $this->showView('404');
       } else {
           $this->load->model('Offers_model');

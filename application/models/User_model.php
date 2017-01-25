@@ -3,6 +3,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 class User_model extends CI_model
 {
+  
     public function createUser($login, $password, $email, $type = 'standard')
     {
         try {
@@ -27,6 +28,10 @@ class User_model extends CI_model
         } catch (Exception $e) {
             return $e->getMessage();
         }
+    }
+    public function getUser($value='')
+    {
+      # code...
     }
     public function verify($email)
     {

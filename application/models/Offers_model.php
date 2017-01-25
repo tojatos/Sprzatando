@@ -1,9 +1,6 @@
 <?php
 
 defined('BASEPATH') or exit('No direct script access allowed');
-if (!isset($_SESSION)) {
-    session_start();
-}
 class Offers_model extends CI_model
 {
     public function createOffer($date, $time, $phone, $email, $place, $price, $rooms, $todos)
@@ -33,7 +30,7 @@ class Offers_model extends CI_model
               'price' => $price,
               'rooms' => $rooms_id,
               'todos' => $todos_id,
-              'user' => $_SESSION['user_name'],
+              'user' => $this->session->user_name,
             );
             $this->db->insert('rooms', $roomsData);
             $this->db->insert('todos', $todosData);

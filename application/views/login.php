@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-<?php if (!isset($_SESSION['logged'])): ?>
+<?php if (!$this->session->logged): ?>
 <h1 class="h1">Sprzątando</h1>
 <form class="form login_form" method="post">
   <h2 class="center">Zaloguj się</h2>
