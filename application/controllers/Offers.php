@@ -5,7 +5,7 @@ class Offers extends CI_Controller
     public function addOffer()
     {
         try {
-            if (!$this->session->logged) {
+            if (!$this->session->isLogged) {
                 throw new Exception('Aby dodać ofertę musisz być zalogowany!');
             }
 
@@ -56,7 +56,7 @@ class Offers extends CI_Controller
     // }
     public function showOffers()
     {
-        if (!$this->session->logged) {
+        if (!$this->session->isLogged) {
             $this->showView('404');
         } else {
             $this->load->model('Offers_model');
@@ -72,7 +72,7 @@ class Offers extends CI_Controller
         $data['message'] = "Nie ma takiej oferty w bazie";
         $this->showView('show_error', $data);
       }
-      else if (!$this->session->logged) {
+      else if (!$this->session->isLogged) {
           $this->showView('404');
       } else {
           $this->load->model('Offers_model');

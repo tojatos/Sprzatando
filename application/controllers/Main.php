@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Main extends CI_Controller
+class Main extends MY_Controller
 {
     public function index()
     {
@@ -20,21 +20,10 @@ class Main extends CI_Controller
     }
     public function addOffer()
     {
-        if (!$this->session->logged) {
+        if (!$this->session->isLogged) {
             $this->showView('404');
         } else {
             $this->showMainNavView('addOffer');
         }
-    }
-    private function showView($viewName, $data = null)
-    {
-        $this->load->view('inc/header');
-        $this->load->view($viewName, $data);
-        $this->load->view('inc/footer');
-    }
-    private function showMainNavView($viewName)
-    {
-      $data['mainNav'] = $this->load->view('mainNav','',true);
-      $this->showView($viewName, $data);
     }
 }

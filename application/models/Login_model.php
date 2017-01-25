@@ -12,7 +12,8 @@ class Login_model extends CI_model
             }
             $row = $result->result()[0];
             if($row->verified == false) throw new Exception("Musisz zweryfikować swoje konto przed zalogowaniem!");
-            $this->session->logged = true;
+            session_unset();
+            $this->session->isLogged = true;
             $this->session->user_name = $row->login;
             $this->session->user_type = $row->type;
         } catch (Exception $e) {
