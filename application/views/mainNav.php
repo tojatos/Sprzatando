@@ -8,6 +8,7 @@
   <form class="logout_form" method="post">
     <input class="btn black-btn center" type="submit" value="Wyloguj się">
   </form>
+  <a href="<?= site_url('User/'.$this->session->user_name) ?>" class="btn green-btn center">Profil</a>
   <a href="<?= site_url('AddOffer') ?>" class="btn green-btn center">Dodaj ofertę</a>
   <a href="<?= site_url('Offers') ?>" class="btn green-btn center">Szukaj ofert</a>
 <?php endif; ?>

@@ -1,6 +1,7 @@
 <?php
+
 defined('BASEPATH') or exit('No direct script access allowed');
-class Offers extends CI_Controller
+class Offers extends MY_Controller
 {
     public function addOffer()
     {
@@ -29,7 +30,6 @@ class Offers extends CI_Controller
                 throw new Exception('Musisz wybrać przynajmniej jeden pokój lub czynność!');
             }
 
-            //dump(date_create($date.' '.$time));
             $this->load->model('Offers_model');
             $try = $this->Offers_model->createOffer($date, $time, $phone, $email, $place, $price, $rooms[0], $todos[0]);
             if ($try != null) {
@@ -41,19 +41,6 @@ class Offers extends CI_Controller
             echo $e->getMessage();
         }
     }
-    // public function sendVerifyEmail($email)
-    // {
-    //   $this->load->library('email');
-    //   $this->email->from('noreply@'.base_url(), 'Verifier');
-    //   $this->email->to($email);
-    //   $this->email->subject('Sprzątando - Weryfikacja');
-    //   $this->email->message('Potwierdź swoją rejestrację klikając w <a href="'.base_url().md5("hash13".$email).'">ten link</a>');
-    //   $this->email->send();
-    // }
-    // public function test()
-    // {
-    //   $this->sendVerifyEmail("tojatos@gmail.com");
-    // }
     public function showOffers()
     {
         if (!$this->session->isLogged) {
@@ -61,31 +48,25 @@ class Offers extends CI_Controller
         } else {
             $this->load->model('Offers_model');
             $offers = $this->Offers_model->getOffers();
-            $data['mainNav'] = $this->load->view('mainNav', '', true);
             $data['offers'] = $offers;
-            $this->showView('showOffers', $data);
+            $this->showMainNavView('showOffers', $data);
         }
     }
     public function showOffer($id)
     {
-      if($id!=intval($id)) {
-        $data['message'] = "Nie ma takiej oferty w bazie";
-        $this->showView('show_error', $data);
-      }
-      else if (!$this->session->isLogged) {
-          $this->showView('404');
-      } else {
-          $this->load->model('Offers_model');
-          $offer = $this->Offers_model->getOffer($id);
-          $data['mainNav'] = $this->load->view('mainNav', '', true);
-          $data['offer'] = $offer;
-          $this->showView('showOffer', $data);
-      }
-    }
-    private function showView($viewName, $data = null)
-    {
-        $this->load->view('inc/header');
-        $this->load->view($viewName, $data);
-        $this->load->view('inc/footer');
+        if (!$this->session->isLogged) {
+            $this->showView('404');
+        } elseif ($id != intval($id)) {
+            $this->showError('Nie ma takiej oferty w bazie');
+        } else {
+            $this->load->model('Offers_model');
+            $offer = $this->Offers_model->getOffer($id);
+            if($offer == null){
+              $this->showError('Nie ma takiej oferty w bazie');
+            } else{
+              $data['offer'] = $offer;
+              $this->showMainNavView('showOffer', $data);
+            }
+        }
     }
 }

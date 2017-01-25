@@ -1,7 +1,7 @@
 <?php
 
 defined('BASEPATH') or exit('No direct script access allowed');
-class Users extends CI_Controller
+class Users extends MY_Controller
 {
     public function showUser($username)
     {
@@ -19,11 +19,5 @@ class Users extends CI_Controller
             }
 
         }
-    }
-    private function showView($viewName, $data = null)
-    {
-        $this->load->view('inc/header');
-        $this->load->view($viewName, $data);
-        $this->load->view('inc/footer');
     }
 }
