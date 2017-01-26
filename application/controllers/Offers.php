@@ -69,4 +69,6 @@ class Offers extends MY_Controller
             }
         }
     }
+    
+
 }

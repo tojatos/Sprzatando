@@ -786,7 +786,7 @@ html {
         html body .register_form input[type="submit"]:hover {
           background-color: #eee; }
     html body .login_form {
-      width: 380px;
+      width: 390px;
       padding: 10px 5px;
       color: #000;
       border: 1px solid black;
@@ -795,11 +795,11 @@ html {
       margin: 100px auto 10px; }
       html body .login_form .input {
         display: flex;
-        width: 350px;
+        width: 360px;
         margin: 5px 10px; }
         html body .login_form .input label {
           display: block;
-          width: 50px;
+          width: 60px;
           font-size: 20px; }
       html body .login_form > label {
         display: flex;
@@ -942,6 +942,8 @@ html {
       html body .offer:hover {
         text-decoration: none;
         background-color: #974916; }
+    html body .applicator {
+      border: 1px solid red; }
   html .btn {
     display: block;
     width: 100%;

@@ -105,7 +105,7 @@ html {
         }
 
         .login_form {
-            @include generateForm(380px);
+            @include generateForm(390px);
             margin: 100px auto 10px;
         }
 
@@ -131,6 +131,10 @@ html {
                 text-decoration: none;
                 background-color: #974916;
             }
+
+        }
+        .applicator{
+          border: 1px solid red;
         }
     }
 

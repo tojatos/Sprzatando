@@ -1,7 +1,7 @@
 <?php
 
 defined('BASEPATH') or exit('No direct script access allowed');
-class Offers_model extends CI_model
+class Offers_model extends MY_Model
 {
     public function createOffer($date, $time, $phone, $email, $place, $price, $rooms, $todos)
     {
@@ -39,20 +39,9 @@ class Offers_model extends CI_model
             return $e->getMessage();
         }
     }
-    private function getNextID($table)
-    {
 
-        $maxid = 0;
-        $row = $this->db->query('SELECT MAX(id) AS maxid FROM '.$table)->row();
-        if ($row) {
-            $maxid = $row->maxid;
-        }
-
-        return $maxid + 1;
-    }
     public function getOffers()
     {
-        //
         $query = $this->db->query('select offers.id, datetime, place, price, bathroom, kitchen, living_room, bedroom, clean_car, clean_windows from offers join rooms on offers.rooms = rooms.id join todos on offers.todos = todos.id;');
         if ($query->result() == null) {
           return null;
@@ -70,4 +59,10 @@ class Offers_model extends CI_model
           return $query->result()[0];
         }
     }
+    public function getOfferUser($offer_id)
+    {
+      $offer_user = $this->db->get_where('offers', ['id' => $offer_id])->result()[0]->user;
+      return $offer_user;
+    }
+
 }
