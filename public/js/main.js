@@ -74,4 +74,5 @@ $(function() {
  sendPostDataOnSubmit('.register_form', 'Register/zarejestruj');
  sendPostDataOnSubmit('.offer_form', 'Offers/addOffer');
  sendPostDataOnSubmit('.participate_form', 'Participants/participate');
+ sendPostDataOnSubmit('.accept_participant_form', 'Participants/acceptParticipant', true);
 });

@@ -58,4 +58,27 @@ class Participants extends MY_Controller
             $this->showError($e->getMessage());
         }
     }
+    public function acceptParticipant()
+    {
+        $id = $this->input->post('id');
+        $offer_id = $this->input->post('offer_id');
+        $participant = $this->input->post('participant');
+        try {
+            if (!$this->session->isLogged) {
+                $this->showView('404');
+            } else {
+                $this->load->model('Offers_model');
+                $offer_user = $this->Offers_model->getOfferUser($offer_id);
+                if ($offer_user != $this->session->user_name) {
+                    throw new Exception('Nie możesz zarządzać cudzymi ofertami!');
+                }
+                $this->load->model('Participants_model');
+                $this->Participants_model->acceptParticipant($id, $offer_id, $participant);
+                echo '<h2>Pomyślnie zaakceptowano ofertę użytkownika '.$participant.'.<h2><br>';
+            }
+        } catch (Exception $e) {
+            echo '<h2>Zaakceptowanie oferty nie powiodło się:</h2><br>';
+            echo $e->getMessage();
+        }
+    }
 }

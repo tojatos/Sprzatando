@@ -50,7 +50,7 @@
             <div class="input"><input type="submit" value="Zgłoś się do oferty"></div>
           </form>
           <?php else: ?>
-            <a class="btn black-btn center" href="<?= site_url('Applications/'.$offer->id) ?>">Zobacz zgłoszenia</a>
+            <a class="btn black-btn center" href="<?= site_url('Participants/'.$offer->id) ?>">Zobacz zgłoszenia</a>
           <?php endif; ?>
     </section>
   </div>
