@@ -38,23 +38,24 @@ class Participants extends MY_Controller
     }
     public function showParticipants($offer_id)
     {
-        if (!$this->session->isLogged) {
-            $this->showView('404');
-        } else {
-            $this->load->model('Offers_model');
-            $offer_user = $this->Offers_model->getOfferUser($offer_id);
-            if ($offer_user != $this->session->user_name) {
-                $this->showError('Nie możesz przeglądać cudzych ofert!');
+        try {
+            if (!$this->session->isLogged) {
+                $this->showView('404');
             } else {
+                $this->load->model('Offers_model');
+                $offer_user = $this->Offers_model->getOfferUser($offer_id);
+                if ($offer_user != $this->session->user_name) {
+                    throw new Exception('Nie możesz przeglądać cudzych ofert!');
+                }
                 $this->load->model('Participants_model');
                 $participants = $this->Participants_model->getParticipants($offer_id);
                 if ($participants == null) {
-                    $this->showError('Jeszcze się nikt nie zgłosił do tej oferty.');
-                } else {
-                    $data['participants'] = $participants;
-                    $this->showMainNavView('showParticipants', $data);
+                    throw new Exception('Jeszcze się nikt nie zgłosił do tej oferty.');
                 }
+                $this->showMainNavView('showParticipants', ['participants' => $participants]);
             }
+        } catch (Exception $e) {
+            $this->showError($e->getMessage());
         }
     }
 }
