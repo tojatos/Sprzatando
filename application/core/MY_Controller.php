@@ -15,7 +15,7 @@ class MY_Controller extends CI_Controller
     }
     protected function showError($message)
     {
-      $this->showView('show_error', ['message' => $message]);
+      $this->showMainNavView('show_error', ['message' => $message]);
     }
-    
+
 }

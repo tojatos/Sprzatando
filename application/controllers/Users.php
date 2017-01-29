@@ -11,7 +11,7 @@ class Users extends MY_Controller
             $this->load->model('User_model');
             $user = $this->User_model->getUser($username);
             if ($user == null) {
-                $this->showView('show_error', ['message' => 'Nie ma takiego użytkownika!']);
+                $this->showError('Nie ma takiego użytkownika!');
             } else {
               $data['user'] = $user;
               $data['mainNav'] = $this->load->view('mainNav', '', true);
