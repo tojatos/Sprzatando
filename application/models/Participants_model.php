@@ -34,6 +34,6 @@ class Participants_model extends MY_Model
     public function acceptParticipant($id, $offer_id, $participant)
     {
         $this->db->where('id', $id)->update('participants', ['accepted' => true]);
-        $this->db->where('offer_id', $offer_id)->where('accepted', false)->delete('participants');
+        //$this->db->where('offer_id', $offer_id)->where('accepted', false)->delete('participants'); - dopiero po potwierdzeniu podjęcia się pracy?
     }
 }
