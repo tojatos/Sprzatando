@@ -50,3 +50,15 @@ Opis: Platforma łącząca ludzi posiadający srogie hacjendy z ludźmi mającym
   b) Wykonawca widzi listę opinii o osobie.
 
 7. W systemie istnieje widok, który wyświetla ranking wykonawców bazując na średniej ocen. Wyświetla także opinie tekstowe
+
+#Instalacja
+
+##Po sklonowaniu repozytorium należy zmienić niektóre dane:
+1. application/config/config.php
+  - zmiana zawartości ``$config['base_url']`` na główny adres strony
+2. public/js/main.php
+  - zmiana zawartości ``var baseUrl`` na główny adres strony
+2. application/config/database.php
+  - zmiana zawartości ``$db['default']`` na dane swojej bazy danych
+4. application/config/constants.php
+  - zmiana zawartości ``'HASH_KEY'`` na inny tekst soli
