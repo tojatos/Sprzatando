@@ -1,4 +1,13 @@
-Sprzątando
+#Sprzątando
+
+Projekt mający na celu zwiększenie umiejętności z zakresu Web Development'u.
+Technologie wykorzystane:
+- CodeIgniter
+- AngularJS
+- Sass
+
+#Założenia systemu
+
 
 Opis: Platforma łącząca ludzi posiadający srogie hacjendy z ludźmi mającymi ręce i minimum zdolności manualnych, żeby posprzątać.
 
