@@ -9,6 +9,7 @@ Technologie wykorzystane:
 #Założenia systemu
 
 Zgłaszający - użytkownik, który stworzył ofertę
+
 Wykonawca - użytkownik, który zgłosił się do przyjęcia oferty
 
 1. System zawiera formularz rejestracji
@@ -95,7 +96,7 @@ Wykonawca - użytkownik, który zgłosił się do przyjęcia oferty
     - Formularz opisu zawiera pola:
       - opis `type: text, max-length: 255`
   - Na swojej stronie użytkownik widzi wystawione przez siebie oferty, oraz oferty, do których się zgłosił
-  
+
 11. W systemie istnieje widok, który wyświetla ranking wykonawców bazując na średniej ocen.
 
 #Instalacja

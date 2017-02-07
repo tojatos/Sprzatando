@@ -18,17 +18,26 @@ if (!function_exists('dump_p')) {
     }
 }
 if (!function_exists('validateForm')) {
-    //example array -  ['Nie zapomnij o e-mail\'u!' => $email]
+    //example array -  'login' => [$login, 50],
     function validateForm($arr)
     {
-        foreach ($arr as $msg => $var) {
+        $msg = '';
+        foreach ($arr as $name => $info) {
+            $var = $info[0];
+            $max_num = $info[1];
             if ($var == null) {
-                throw new Exception($msg);
+                $msg .= 'Pole "'.$name.'" jest puste!<br>';
             }
-
-            if (strpos($var, '"') !== false||strpos($var, "'") !== false) {
-                throw new Exception("Proszę usunąć apostrofy i cudzysłowia!");
+            if (strlen($var) > $max_num) {
+                $msg .= 'Pole "'.$name.'" jest zbyt długie!<br>';
+            }
+            if (strpos($var, '"') !== false || strpos($var, "'") !== false) {
+                $msg .= 'Pole "'.$name.'" zawiera apostrofy lub cudzysłowia!<br>';
             }
         }
+        if ($msg != '') {
+            throw new Exception($msg);
+        }
+
     }
 }

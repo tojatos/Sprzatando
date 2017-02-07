@@ -16,8 +16,8 @@ class Participants extends MY_Controller
             $participant = $this->session->user_name;
 
             validateForm([
-            'Nie zapomnij o cenie!' => $price,
-            'Nie zapomnij o opisie!' => $text,
+            'cena' => [$price, 50],
+            'opis' => [$text, 255],
           ]);
 
             $this->load->model('Offers_model');

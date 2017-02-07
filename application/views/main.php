@@ -6,7 +6,7 @@
   <?= $mainNav ?>
   </div>
   <div class="col-xs-12 col-sm-7 col-sm-pull-5 col-md-8 col-md-pull-4 col-lg-9 col-lg-pull-3">
-    <h2 class="h2">Witaj na naszym serwisie aukcyjnym!</h2>
+    <h2 class="h2">Witaj na naszym serwisie!</h2>
     <p>Sprzątando to platforma łącząca ludzi posiadających srogie hacjendy z ludźmi mającymi ręce i minimum zdolności manualnych, żeby posprzątać.</p>
     <?php if (!$this->session->isLogged): ?>
     <p>Aby korzystać z serwisu, musisz się <a href="<?= site_url('Login') ?>">zalogować</a>.</p>

@@ -10,10 +10,10 @@ class Register extends CI_Controller
             $password = $this->input->post('password');
             $password_repeat = $this->input->post('password_repeat');
             validateForm([
-              'Nie zapomnij o e-mail\'u!' => $email,
-              'Nie zapomnij o loginie!' => $login,
-              'Nie zapomnij o haśle!' => $password,
-              'Nie zapomnij potwierdzić hasła!' => $password_repeat,
+              'e-mail' => [$email, 50],
+              'login' => [$login, 50],
+              'hasło' => [$password, 50],
+              'potwierdzenie hasła' => [$password_repeat, 50],
           ]);
             if ($password != $password_repeat) {
                 throw new Exception('Hasło różni się od hasła powtórzonego!');

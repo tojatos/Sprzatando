@@ -8,8 +8,8 @@ class Login extends CI_Controller
             $login = $this->input->post('login');
             $password = $this->input->post('password');
             validateForm([
-            'Nie zapomnij o loginie!' => $login,
-            'Nie zapomnij o haśle!' => $password,
+            'login' => [$login, 50],
+            'hasło' => [$password, 50],
             ]);
             $this->load->model('Login_model');
             $try = $this->Login_model->login($login, $password);

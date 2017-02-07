@@ -19,12 +19,12 @@ class Offers extends MY_Controller
             $rooms[] = $this->input->post('rooms');
             $todos[] = $this->input->post('todos');
             validateForm([
-              'Nie zapomnij o dacie!' => $date,
-              'Nie zapomnij o czasie!' => $time,
-              'Nie zapomnij o telefonie!' => $phone,
-              'Nie zapomnij o miejscu!' => $place,
-              'Nie zapomnij o cenie!' => $price,
-              'Nie zapomnij o e-mail\'u!' => $email,
+              'data' => [$date, 50],
+              'czas' => [$time, 50],
+              'telefon' => [$phone, 50],
+              'miejsce' => [$place, 255],
+              'cena' => [$price, 50],
+              'e-mail' => [$email, 50],
             ]);
             if ($rooms[0] == null && $todos[0] == null) {
                 throw new Exception('Musisz wybrać przynajmniej jeden pokój lub czynność!');
@@ -69,6 +69,6 @@ class Offers extends MY_Controller
             }
         }
     }
-    
+
 
 }

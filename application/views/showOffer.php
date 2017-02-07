@@ -47,7 +47,7 @@
           </ul>
           <?php if($offer->user != $this->session->user_name): ?>
           <form class="participate_form" method="post">
-            <div class="input"><label>Proponowana cena:</label><input type="number" name="price" value=""></div>
+            <div class="input"><label>Proponowana cena: (zł)</label><input type="number" name="price" value=""></div>
             <div class="input"><label>Opis:</label><textarea name="text" placeholder="Opisz swoją propozycję"></textarea></div>
             <input type="hidden" name="offer_id" value="<?= $offer->id ?>">
             <div class="input"><input type="submit" value="Zgłoś się do oferty"></div>
