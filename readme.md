@@ -3,75 +3,111 @@
 Projekt mający na celu zwiększenie umiejętności z zakresu Web Development'u.
 Technologie wykorzystane:
 - CodeIgniter
-- AngularJS
+<!--- AngularJS -->
 - Sass
 
 #Założenia systemu
 
-Opis: Platforma łącząca ludzi posiadający srogie hacjendy z ludźmi mającymi ręce i minimum zdolności manualnych, żeby posprzątać.
+Zgłaszający - użytkownik, który stworzył ofertę
+Wykonawca - użytkownik, który zgłosił się do przyjęcia oferty
 
-1. Użytkownik zakłada konto. Rejestracja wymaga potwierdzenia i aktywacji poprzez email. Użytkownik ma mieć możliwość przypomnienia (ustawienia) hasła – poprzez link wysyłany na email, prowadzący do właściwego ekrany w systemie.
+1. System zawiera formularz rejestracji
+  - Rejestracja wymaga potwierdzenia i aktywacji poprzez email
+  - Istnieje możliwość przypomnienia hasła poprzez link wysyłany na email
+  - Formularz rejestracji zawiera pola:
+    - e-mail `type: e-mail, max-length: 50, UNIQUE`
+    - login `type: text, max-length: 50, UNIQUE`
+    - hasło `type: text, max-length: 50`
+    - potwierdzenie hasła `type: text, max-length: 50`
+      - potwierdzenie hasła musi być takie same jak hasło
+  - Wszystkie pola są obowiązkowe.
 
-2.  Użytkownik może dodać ofertę (Zgłaszający), użytkownik może zgłosić się do wykonania oferty (Wykonawca). Zgłaszający nie może być jednocześnie Wykonawcą swojej oferty.
+2. System zawiera formularz logowania
+  - Formularz logowania zawiera pola:
+    - login `type: login, max-length: 50`
+    - hasło `type: text, max-length: 50`
+  - Wszystkie pola są obowiązkowe.
 
-3. Oferta ma zawierać informacje:
+3. System zawiera formularz dodania oferty:
+  - Formularz dodania oferty zawiera pola:
+    - data `type: date, max-length: 50`
+    - czas `type: time, max-length: 50`
+    - numer telefonu `type: number, max-length: 50`
+    - e-mail kontaktowy `type: text, max-length: 50`
+    - miejsce `type: text, max-length: 255`
+    - cena (w zł) `type: text, max-length: 50`
+    - pokoje do sprzątania (checkbox'y) `type: array`
+      - kuchnia
+      - łazienka
+      - salon
+      - sypialnia
+    - czynności do wykonania (checkbox'y) `type: array`
+      - umycie samochodu
+      - umycie okien
+  - Oferta musi zawierać minimum jedną opcję wybraną przez Zlecającego.
+  - Wszystkie pola są obowiązkowe.
 
-   a) Miejsce i czas planowanego sprzątania (zawsze pojedyncze zdarzenie)
-
-   b) Telefon i email kontaktowy
-
-   c) pokoje do sprzątania ( kuchnia, łazienka, salon, sypialnia) – do zaznaczenia np. checkbboksem
-
-   d) czynności do wykonania – umycie samochodu, umycie okien – do zaznaczenia np. checkboksem
-
-   e) cenę
-
-   f) oferta musi zawierać minimum jedną opcję wybraną przez Zlecającego. Wszystkie pola są obowiązkowe.
-
-4. System zawiera stroną-listę wystawionych ofert
+4. System zawiera stronę z listą wystawionych ofert
   - Strona ta jest widoczna tylko dla zalogowanych użytkowników
-  - widoczne są tylko oferty o czasie wykonania późniejszym niż czas przeglądania
-  - To miejsce w systemie ma umożliwiać filtrowania wpisów: po cenie (dwa pola „od” i „do”) oraz klikane dla każdej z cech w pkt. 3.c. oraz 3.d. – jeśli użytkownik zaznaczy w filtrowaniu np. checkboksem „[v] mycie samochodu”, wyświetlamy oferty zawierające m.in. tą pozycję.
+  - Widoczne są tylko oferty o czasie wykonania późniejszym niż czas przeglądania
+  - To miejsce w systemie ma umożliwiać filtrowania wpisów:
+    - po cenie (dwa pola „od” i „do”)
+    - klikane dla każdego pokoju do sprzątania i czynności do wykonania
+      - jeśli użytkownik zaznaczy w filtrowaniu np. checkboksem „[v] mycie samochodu”, wyświetlamy oferty zawierające m.in. tą pozycję.
+      - jeśli nic nie jest zaznaczon
 
-  b) Można zaznaczać dowolną liczbę pozycji z 3.c. i 3.d. celem filtrowania listy.
 5. Każda oferta ma swoją stronę
   - Strona ta jest widoczna tylko dla zalogowanych użytkowników
   - Na tej stronie znajdują się informacje danej oferty:
     - czas
     - miejsce
     - cena
+    - e-mail
     - numer telefonu
     - użytkownik, który wystawił ofertę
     - pokoje do sprzątania
     - czynności do wykonania
   - Na tej stronie użytkownik, który nie wystawił oferty, może się do niej zgłosić
     - Formularz zgłoszenia zawiera pola:
-      - proponowaną cenę (w zł) `type: number, max-length: 10`
-      - opis `type: text, max-length: 1000`
-5. Zlecający dla każdej wystawionej oferty widzi listę zgłoszonych wykonawców.
+      - proponowaną cenę (w zł) `type: number, max-length: 50`
+      - opis `type: text, max-length: 255`
+    - Nie można zgłosić się do nieaktualnej oferty
+  - Na tej stronie użytkownik, który wystawił ofertę, może przejść do listy Wykonawców
 
-   a) Wybiera jednego z nich
+6. Każda oferta ma stronę z listą Wykonawców
+  - Strona ta jest widoczna tylko dla Zgłaszającego
 
-  b) Po wybraniu Wykonawcy i potwierdzeniu przez Wykonawcę podjęcia się pracy (patrz 6.a.), pojawia się opcja „Potwierdź wykonanie zadania” – w rzeczywistym świecie Zlecający uaktywni ją  dopiero po wykonaniu czynności sprzątania
+7. Zgłaszający może zaakceptować dowolną ilość Wykonawców
 
-  c) Zlecający może wystawić opinię o Wykonawcy (ocena 1…6, krótki opis tekstowy)
+8. Wykonawca może potwierdzić podjęcie się oferty po zaakceptowaniu
+  - po potwierdzeniu podjęcia się oferty:
+    - nie można zmienić Wykonawcy, zostaje tylko ten, który potwierdził podjęcie się oferty
+    - oferta znika z listy ofert
 
-6. Wykonawca widzi listę ofert do, których się zgłosił.
+9. Po wykonaniu zadania Zgłaszający może potwierdzić wykonanie zadania
+  - po potwierdzeniu wykonania zadania Zgłaszający i Wykonawca mogą sobie wystawić opinię
 
-  a) Wykonawca widzi informacją o wybraniu go przez Zgłaszającego oraz ma możliwość potwierdzenia
-
-  b) Wykonawca widzi listę opinii o osobie.
-
-7. W systemie istnieje widok, który wyświetla ranking wykonawców bazując na średniej ocen. Wyświetla także opinie tekstowe
+10. Każdy użytkownik ma swoją stronę
+  - Strona ta jest widoczna tylko dla zalogowanych użytkowników
+  - Na tej stronie są widoczne opinie i średnia ocen z nich
+  - Na tej stronie jest widoczny opis ustawiony przez użytkownika
+  - Na swojej stronie użytkownik ma możliwość ustawić własny opis
+    - Formularz opisu zawiera pola:
+      - opis `type: text, max-length: 255`
+  - Na swojej stronie użytkownik widzi wystawione przez siebie oferty, oraz oferty, do których się zgłosił
+  
+11. W systemie istnieje widok, który wyświetla ranking wykonawców bazując na średniej ocen.
 
 #Instalacja
 
+##Baza danych do wyeksportowania znajduje się w pliku `sprzatando.sql`
+
 ##Po sklonowaniu repozytorium należy zmienić niektóre dane:
-1. application/config/config.php
-  - zmiana zawartości ``$config['base_url']`` na główny adres strony
-2. public/js/main.php
-  - zmiana zawartości ``var baseUrl`` na główny adres strony
-2. application/config/database.php
-  - zmiana zawartości ``$db['default']`` na dane swojej bazy danych
-4. application/config/constants.php
-  - zmiana zawartości ``'HASH_KEY'`` na inny tekst soli
+1. `application/config/config.php`
+  - zmiana zawartości `$config['base_url']` na główny adres strony
+2. `public/js/main.php`
+  - zmiana zawartości `var baseUrl` na główny adres strony
+2. `application/config/database.php`
+  - zmiana zawartości `$db['default']` na dane swojej bazy danych
+4. `application/config/constants.php`
+  - zmiana zawartości `'HASH_KEY'` na inny tekst soli
