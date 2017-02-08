@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 30 Sty 2017, 15:47
+-- Czas generowania: 08 Lut 2017, 17:42
 -- Wersja serwera: 10.1.10-MariaDB
 -- Wersja PHP: 5.6.19
 
@@ -35,30 +35,32 @@ CREATE TABLE `offers` (
   `price` int(50) NOT NULL,
   `rooms` int(50) NOT NULL,
   `todos` int(50) NOT NULL,
-  `user` varchar(50) NOT NULL
+  `user` varchar(50) NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Zrzut danych tabeli `offers`
 --
 
-INSERT INTO `offers` (`id`, `datetime`, `phone`, `email`, `place`, `price`, `rooms`, `todos`, `user`) VALUES
-(4, '2017-01-16 21:37:00', '123456789', 'f@email.com', 'ul. Testowa', 343, 1, 1, 'tojatos'),
-(5, '2017-01-16 12:34:00', '2353', 'f@email.com', 'ul. Testowa', 343, 2, 2, 'tojatos'),
-(6, '2017-01-16 12:34:00', '2353', 'f@email.com', 'ul. Testowa', 343, 3, 3, 'tojatos'),
-(7, '2017-01-17 13:00:00', '2145', 'tojatos@interia.pl', 'twitch chat', 0, 4, 4, 'tojatos'),
-(8, '2017-01-17 13:00:00', '2145', 'tojatos@interia.pl', 'twitch chat', 0, 5, 5, 'tojatos'),
-(9, '2017-01-17 13:00:00', '2145', 'tojatos@interia.pl', 'twitch chat', 0, 6, 6, 'tojatos'),
-(10, '2017-02-26 21:37:00', '123456789', 'wyjebnik@gmail.com', 'za garażami 65/2 Opole', 50, 7, 7, 'tojatos'),
-(11, '2017-02-25 06:00:00', '134531462', 'email@email.com', 'Bardzo ciekawe miejsce ;)', 500, 8, 8, 'tojatos'),
-(12, '2017-07-28 12:34:00', '885234212', 'foter@f55.com', 'ul. Kościuszki Opole główne', 831, 9, 9, 'tojatos'),
-(13, '2017-02-24 21:00:00', '3463246234632463', 'testowy@test.pl', 'ul. Sienkiewicza 4/3', 500, 10, 10, 'test'),
-(14, '2017-02-24 21:00:00', '3463246234632463', 'testowy@test.pl', 'ul. Sienkiewicza 4/3', 500, 11, 11, 'test'),
-(15, '2017-02-24 21:00:00', '3463246234632463', 'testowy@test.pl', 'ul. Sienkiewicza 536', 23, 12, 12, 'test'),
-(16, '2017-03-18 23:59:00', '505707909', 'hermiona@mail.pl', 'ul.moja hacjęda', 2147483647, 13, 13, 'Minecraft'),
-(17, '2017-03-18 23:59:00', '505707909', 'hermiona@mail.pl', 'ul.moja hacjęda', 2147483647, 14, 14, 'Minecraft'),
-(18, '2017-02-14 15:58:00', '505707909', 'hermiona@mail.pl', 'ul. dupowa 5/405', 89, 15, 15, 'Minecraft'),
-(19, '0000-00-00 00:00:00', 'ghjkkkkkkkk', 'ghfstdrgfffr@frt', 'hhhhhhhhhhh', -1, 16, 16, 'Minecraft');
+INSERT INTO `offers` (`id`, `datetime`, `phone`, `email`, `place`, `price`, `rooms`, `todos`, `user`, `active`) VALUES
+(4, '2017-01-16 21:37:00', '123456789', 'f@email.com', 'ul. Testowa', 343, 1, 1, 'tojatos', 1),
+(5, '2017-01-16 12:34:00', '2353', 'f@email.com', 'ul. Testowa', 343, 2, 2, 'tojatos', 1),
+(6, '2017-01-16 12:34:00', '2353', 'f@email.com', 'ul. Testowa', 343, 3, 3, 'tojatos', 1),
+(7, '2017-01-17 13:00:00', '2145', 'tojatos@interia.pl', 'twitch chat', 0, 4, 4, 'tojatos', 1),
+(8, '2017-01-17 13:00:00', '2145', 'tojatos@interia.pl', 'twitch chat', 0, 5, 5, 'tojatos', 1),
+(9, '2017-01-17 13:00:00', '2145', 'tojatos@interia.pl', 'twitch chat', 0, 6, 6, 'tojatos', 1),
+(10, '2017-02-26 21:37:00', '123456789', 'wyjebnik@gmail.com', 'za garażami 65/2 Opole', 50, 7, 7, 'tojatos', 1),
+(11, '2017-02-25 06:00:00', '134531462', 'email@email.com', 'Bardzo ciekawe miejsce ;)', 500, 8, 8, 'tojatos', 1),
+(12, '2017-07-28 12:34:00', '885234212', 'foter@f55.com', 'ul. Kościuszki Opole główne', 831, 9, 9, 'tojatos', 1),
+(13, '2017-02-24 21:00:00', '3463246234632463', 'testowy@test.pl', 'ul. Sienkiewicza 4/3', 500, 10, 10, 'test', 1),
+(14, '2017-02-24 21:00:00', '3463246234632463', 'testowy@test.pl', 'ul. Sienkiewicza 4/3', 500, 11, 11, 'test', 1),
+(15, '2017-02-24 21:00:00', '3463246234632463', 'testowy@test.pl', 'ul. Sienkiewicza 536', 23, 12, 12, 'test', 1),
+(16, '2017-03-18 23:59:00', '505707909', 'hermiona@mail.pl', 'ul.moja hacjęda', 2147483647, 13, 13, 'Minecraft', 1),
+(17, '2017-03-18 23:59:00', '505707909', 'hermiona@mail.pl', 'ul.moja hacjęda', 2147483647, 14, 14, 'Minecraft', 1),
+(18, '2017-02-14 15:58:00', '505707909', 'hermiona@mail.pl', 'ul. dupowa 5/405', 89, 15, 15, 'Minecraft', 1),
+(19, '0000-00-00 00:00:00', 'ghjkkkkkkkk', 'ghfstdrgfffr@frt', 'hhhhhhhhhhh', -1, 16, 16, 'Minecraft', 1),
+(20, '2017-02-25 00:47:00', '2323523523232352352323', 'std@gsd.pl', 'Opole', 909, 17, 17, 'test', 1);
 
 -- --------------------------------------------------------
 
@@ -119,7 +121,8 @@ INSERT INTO `rooms` (`id`, `bathroom`, `kitchen`, `living_room`, `bedroom`) VALU
 (13, 1, 0, 0, 0),
 (14, 1, 0, 0, 0),
 (15, 1, 0, 0, 0),
-(16, 1, 0, 0, 0);
+(16, 1, 0, 0, 0),
+(17, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -153,7 +156,8 @@ INSERT INTO `todos` (`id`, `clean_car`, `clean_windows`) VALUES
 (13, 1, 0),
 (14, 1, 0),
 (15, 0, 1),
-(16, 1, 0);
+(16, 1, 0),
+(17, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -223,7 +227,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT dla tabeli `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT dla tabeli `participants`
 --
@@ -233,12 +237,12 @@ ALTER TABLE `participants`
 -- AUTO_INCREMENT dla tabeli `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT dla tabeli `todos`
 --
 ALTER TABLE `todos`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
