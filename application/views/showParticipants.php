@@ -10,12 +10,12 @@
         <?php foreach ($participants as $par): ?>
           <?php if ($par->accepted==true): ?>
             <div class="applicator">
-              <h2 class="h2">Wybrana oferta:</h2>
               <ul>
                 <li>Użytkownik: <a href="<?= site_url('User/'.$par->user) ?>"><?= $par->user ?></a></li>
                 <li>Proponowana cena: <?= $par->price ?> zł</li>
                 <li>Opis: <?= $par->text ?></li>
               </ul>
+              <div class="center">Oferta zaakceptowana, oczekiwanie na potwierdzenie </div>
             </div>
           <?php else: ?>
           <div class="applicator">

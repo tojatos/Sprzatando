@@ -81,4 +81,5 @@ class Participants extends MY_Controller
             echo $e->getMessage();
         }
     }
+    
 }

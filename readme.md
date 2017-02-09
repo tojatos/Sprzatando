@@ -55,7 +55,7 @@ Wykonawca - użytkownik, który zgłosił się do przyjęcia oferty
     - po cenie (dwa pola „od” i „do”)
     - klikane dla każdego pokoju do sprzątania i czynności do wykonania
       - jeśli użytkownik zaznaczy w filtrowaniu np. checkboksem „[v] mycie samochodu”, wyświetlamy oferty zawierające m.in. tą pozycję.
-      - jeśli nic nie jest zaznaczon
+      - jeśli nic nie jest zaznaczone, zachowanie jest, jakby zaznaczone było wszystko
 
 5. Każda oferta ma swoją stronę
   - Strona ta jest widoczna tylko dla zalogowanych użytkowników

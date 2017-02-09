@@ -40,9 +40,14 @@ class Offers_model extends MY_Model
         }
     }
 
-    public function getOffers()
+    public function getOffers($user = null)
     {
+      if($user == null){
         $query = $this->db->query('select offers.id, datetime, place, price, bathroom, kitchen, living_room, bedroom, clean_car, clean_windows from offers join rooms on offers.rooms = rooms.id join todos on offers.todos = todos.id;');
+}
+else {
+  $query = $this->db->query('select offers.id, datetime, place, price, bathroom, kitchen, living_room, bedroom, clean_car, clean_windows from offers join rooms on offers.rooms = rooms.id join todos on offers.todos = todos.id where user like "'.$user.'";');
+}
         if ($query->result() == null) {
           return null;
         } else {
