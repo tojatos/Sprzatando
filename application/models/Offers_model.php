@@ -42,32 +42,30 @@ class Offers_model extends MY_Model
 
     public function getOffers($user = null)
     {
-      if($user == null){
-        $query = $this->db->query('select offers.id, datetime, place, price, bathroom, kitchen, living_room, bedroom, clean_car, clean_windows from offers join rooms on offers.rooms = rooms.id join todos on offers.todos = todos.id;');
-}
-else {
-  $query = $this->db->query('select offers.id, datetime, place, price, bathroom, kitchen, living_room, bedroom, clean_car, clean_windows from offers join rooms on offers.rooms = rooms.id join todos on offers.todos = todos.id where user like "'.$user.'";');
-}
+        $this->db->select('offers.*, rooms.*, todos.*')->from('offers')->join('rooms', 'offers.rooms = rooms.id_rooms')->join('todos', 'offers.todos = todos.id_todos');
+        if ($user != null) {
+            $this->db->where('user', $user);
+        }
+        $query = $this->db->get();
         if ($query->result() == null) {
-          return null;
+            return null;
         } else {
-          return $query->result();
+            return $query->result();
         }
     }
     public function getOffer($id)
     {
-
-        $query = $this->db->query('select offers.id, datetime, place, price, email, phone, bathroom, kitchen, living_room, bedroom, clean_car, clean_windows, user from offers join rooms on offers.rooms = rooms.id join todos on offers.todos = todos.id where offers.id = '.$id.' limit 1;');
+        $query = $this->db->select('offers.*, rooms.*, todos.*')->from('offers')->join('rooms', 'offers.rooms = rooms.id_rooms')->join('todos', 'offers.todos = todos.id_todos')->where('offers.id_offers', $id)->limit(1)->get();
         if ($query->result() == null) {
-          return null;
+            return null;
         } else {
-          return $query->result()[0];
+            return $query->result()[0];
         }
     }
     public function getOfferUser($offer_id)
     {
-      $offer_user = $this->db->get_where('offers', ['id' => $offer_id])->result()[0]->user;
-      return $offer_user;
-    }
+        $offer_user = $this->db->get_where('offers', ['id_offers' => $offer_id])->result()[0]->user;
 
+        return $offer_user;
+    }
 }

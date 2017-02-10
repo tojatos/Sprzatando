@@ -5,6 +5,7 @@ Technologie wykorzystane:
 - CodeIgniter
 <!--- AngularJS -->
 - Sass
+- JQuery
 
 #Założenia systemu
 

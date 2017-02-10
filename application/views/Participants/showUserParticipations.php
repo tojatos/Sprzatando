@@ -1,9 +1,9 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <?php
 if ($participants != null){
-  foreach ($participants as $par){
+  foreach ($participants as $key=>$par){
     if($par->finished){
-      array_pop($participants);
+      unset($participants[$key]);
     }
   }
 }
@@ -19,7 +19,9 @@ if ($participants != null){
         <li>Opis: <?= $par->text ?></li>
         <li>Zaakceptowana: <?= $par->accepted ? "Tak" : "Nie" ?></li>
         <?php if($par->accepted&&!$par->confirmed): ?>
-          <a href="#" class="btn black-btn">Potwierdź udział w ofercie</a>
+          <form class="confirm_form" method="post">
+            <div class="input"><input type="submit" class="btn black-btn" value="Potwierdź udział w ofercie"></div>
+          </form>
         <?php elseif($par->accepted&&$par->confirmed): ?>
           Potwierdziłeś udział w ofercie!<br>
           Oferta nie została jeszcze oznaczona jako ukończona.

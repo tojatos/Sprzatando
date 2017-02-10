@@ -7,7 +7,7 @@ class MY_Model extends CI_Model
     {
 
         $maxid = 0;
-        $row = $this->db->query('SELECT MAX(id) AS maxid FROM '.$table)->row();
+        $row = $this->db->query('SELECT MAX(id_'.$table.') AS maxid FROM '.$table)->row();
         if ($row) {
             $maxid = $row->maxid;
         }

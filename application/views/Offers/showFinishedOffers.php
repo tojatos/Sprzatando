@@ -12,7 +12,7 @@ if ($offers != null){
       W tej chwili nie ma tu żadnych ofert!<br>
   <?php else: ?>
     <?php foreach ($offers as $offer): ?>
-      <a href="<?= site_url('Offer/'.$offer->id) ?>"class="offer">
+      <a href="<?= site_url('Offer/'.$offer->id_offers) ?>"class="offer">
         <ul>
           <li>Czas: <?= $offer->datetime ?></li>
           <li>Miejsce: <?= $offer->place ?></li>

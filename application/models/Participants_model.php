@@ -8,7 +8,7 @@ class Participants_model extends MY_Model
         try {
             $part_id = $this->getNextID('participants');
             $data = array(
-            'id' => $part_id,
+            'id_participants' => $part_id,
             'offer_id' => $offer_id,
             'user' => $participant,
             'price' => $price,
@@ -43,7 +43,7 @@ class Participants_model extends MY_Model
     }
     public function acceptParticipant($id, $offer_id, $participant)
     {
-        $this->db->where('id', $id)->update('participants', ['accepted' => true]);
+        $this->db->where('id_participants', $id)->update('participants', ['accepted' => true]);
         //$this->db->where('offer_id', $offer_id)->where('accepted', false)->delete('participants'); - dopiero po potwierdzeniu podjęcia się pracy?
     }
     // public function getOffersID($username)
