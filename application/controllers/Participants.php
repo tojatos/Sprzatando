@@ -52,7 +52,10 @@ class Participants extends MY_Controller
                 if ($participants == null) {
                     throw new Exception('Jeszcze się nikt nie zgłosił do tej oferty.');
                 }
-                $this->showMainNavView('showParticipants', ['participants' => $participants]);
+                $data['mainNav'] = $this->loadMainNav();
+                $data['title'] = "Pokaż zgłoszenia";
+                $data['content'] = $this->loadContent('Participants/showParticipants', ['participants' => $participants]);
+                $this->showMainView($data);
             }
         } catch (Exception $e) {
             $this->showError($e->getMessage());
@@ -81,5 +84,5 @@ class Participants extends MY_Controller
             echo $e->getMessage();
         }
     }
-    
+
 }

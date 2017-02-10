@@ -1,4 +1,5 @@
 <?php
+
 defined('BASEPATH') or exit('No direct script access allowed');
 class MY_Controller extends CI_Controller
 {
@@ -8,14 +9,22 @@ class MY_Controller extends CI_Controller
         $this->load->view($viewName, $data);
         $this->load->view('inc/footer');
     }
-    protected function showMainNavView($viewName, $data = null)
+    protected function showMainView($data = null)
     {
-      $data['mainNav'] = $this->load->view('mainNav','',true);
-      $this->showView($viewName, $data);
+        $this->showView('MainViewTemplate', $data);
+    }
+    protected function loadContent($path, $data = null)
+    {
+        return $this->load->view($path, $data, true);
+    }
+    protected function loadMainNav()
+    {
+        return $this->load->view('inc/mainNav', '', true);
     }
     protected function showError($message)
     {
-      $this->showMainNavView('show_error', ['message' => $message]);
+        $data['mainNav'] = $this->loadMainNav();
+        $data['message'] = $message;
+        $this->showView('show_error', $data);
     }
-
 }

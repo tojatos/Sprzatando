@@ -48,8 +48,10 @@ class Offers extends MY_Controller
         } else {
             $this->load->model('Offers_model');
             $offers = $this->Offers_model->getOffers();
-            $data['offers'] = $offers;
-            $this->showMainNavView('showOffers', $data);
+            $data['title'] = 'Pokaż oferty';
+            $data['mainNav'] = $this->loadMainNav();
+            $data['content'] = $this->loadContent('Offers/showOffers', ['offers' => $offers]);
+            $this->showMainView($data);
         }
     }
     public function showOffer($id)
@@ -64,8 +66,10 @@ class Offers extends MY_Controller
             if($offer == null){
               $this->showError('Nie ma takiej oferty w bazie');
             } else{
-              $data['offer'] = $offer;
-              $this->showMainNavView('showOffer', $data);
+              $data['title'] = 'Pokaż ofertę';
+              $data['mainNav'] = $this->loadMainNav();
+              $data['content'] = $this->loadContent('Offers/showOffer', ['offer' => $offer]);
+              $this->showMainView($data);
             }
         }
     }

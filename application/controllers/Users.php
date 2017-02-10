@@ -19,12 +19,16 @@ class Users extends MY_Controller
                   $user_offers = $this->Offers_model->getOffers($username);
                   $this->load->model('Participants_model');
                   $participant_offers = $this->Participants_model->getParticipantsByUser($username);
-                  $data['user_offers'] = $user_offers;
-                  $data['participant_offers'] = $participant_offers;
+                  $data['user_offers'] = $this->loadContent('Offers/showOffers', ['offers' => $user_offers]);
+                  $data['user_fin_offers'] = $this->loadContent('Offers/showFinishedOffers', ['offers' => $user_offers]);
+                  $data['user_par'] = $this->loadContent('Participants/showUserParticipations', ['participants' => $participant_offers]);
+                  $data['user_fin_par'] = $this->loadContent('Participants/showUserFinishedParticipations', ['participants' => $participant_offers]);
                 }
                 $data['user'] = $user;
-                $data['mainNav'] = $this->load->view('mainNav', '', true);
-                $this->showView('showUser', $data);
+                $data['mainNav'] = $this->loadMainNav();
+                $data['title'] = 'Profil użytkownika '.$user->login;
+                $data['content'] = $this->loadContent('Users/showUser', $data);
+                $this->showMainView($data);
             }
         } catch (Exception $e) {
             $this->showError($e->getMessage());
