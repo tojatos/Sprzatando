@@ -37,4 +37,23 @@ class User_model extends CI_model
         return null;
       }
     }
+    public function changeUserMessage($user, $message)
+    {
+      $isSetMessage = $this->db->get_where('user_messages', array('user' => $user), 1);
+      if ($isSetMessage->result() == null) {
+          $this->db->insert('user_messages', ['user'=>$user, 'message'=>$message]);
+      } else {
+          $this->db->where('user',$user)->update('user_messages', ['message'=>$message]);
+      }
+    }
+    public function getUserMessage($user)
+    {
+        $query = $this->db->get_where('user_messages', array('user' => $user), 1);
+        if ($query->result() == null) {
+            return null;
+        }
+        else {
+          return $query->result()[0]->message;
+        }
+    }
 }

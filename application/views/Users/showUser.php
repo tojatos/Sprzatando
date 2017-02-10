@@ -1,5 +1,11 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
+<?= $user_message ?>
 <?php if ($this->session->user_name == $user->login):  ?>
+<form class="user_message_form" method="post">
+  <h2 class="center">Zmiana opisu</h2>
+  <div class="input"><label>Opis:</label><textarea name="message" placeholder="<?= $user_message ?>"></textarea></div>
+  <div class="input"><input type="submit" value="Zmień opis"></div>
+</form>
 <div class="row">
   <div class="col-xs-12 col-lg-6">
     <h2 class="h2">Twoje oferty:</h2>

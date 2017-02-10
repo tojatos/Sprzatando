@@ -1,9 +1,11 @@
 <?php
+if ($offers != null){
   foreach ($offers as $offer){
     if(date_create($offer->datetime)<=date_create('now')){
       array_pop($offers);
     }
   }
+}
 ?>
 <section class="offers_container">
   <?php if ($offers == null): ?>

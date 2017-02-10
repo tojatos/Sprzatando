@@ -118,7 +118,10 @@ html {
             @include generateForm(520px);
             margin: 0 auto;
         }
-
+        .user_message_form{
+          @include generateForm(400px);
+          margin: 0 auto;
+        }
         .offer {
             display: block;
             margin: 5px 0;

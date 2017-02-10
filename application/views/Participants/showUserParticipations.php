@@ -1,10 +1,12 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <?php
+if ($participants != null){
   foreach ($participants as $par){
     if($par->finished){
       array_pop($participants);
     }
   }
+}
 ?>
 <?php if ($participants == null): ?>
     W tej chwili nie ma tu żadnych zgłoszeń!<br>

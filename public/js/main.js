@@ -75,4 +75,5 @@ $(function() {
  sendPostDataOnSubmit('.offer_form', 'Offers/addOffer');
  sendPostDataOnSubmit('.participate_form', 'Participants/participate');
  sendPostDataOnSubmit('.accept_participant_form', 'Participants/acceptParticipant', true);
+ sendPostDataOnSubmit('.user_message_form', 'Users/changeUserMessage', true);
 });
