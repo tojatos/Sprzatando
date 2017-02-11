@@ -15,11 +15,14 @@ if ($participants != null){
     <div class="offer">
       <a href="<?= site_url('Offer/'.$par->offer_id) ?>">Link do oferty</a>
       <ul>
+        <li>Id oferty: <?= $par->offer_id ?></li>
         <li>Cena: <?= $par->price ?></li>
         <li>Opis: <?= $par->text ?></li>
         <li>Zaakceptowana: <?= $par->accepted ? "Tak" : "Nie" ?></li>
         <?php if($par->accepted&&!$par->confirmed): ?>
           <form class="confirm_form" method="post">
+            <input type="hidden" name="id" value="<?= $par->id_participants ?>">
+            <input type="hidden" name="offer_id" value="<?= $par->offer_id ?>">
             <div class="input"><input type="submit" class="btn black-btn" value="Potwierdź udział w ofercie"></div>
           </form>
         <?php elseif($par->accepted&&$par->confirmed): ?>

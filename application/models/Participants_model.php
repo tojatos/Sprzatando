@@ -41,10 +41,18 @@ class Participants_model extends MY_Model
           return $query->result();
       }
     }
+    public function getParticipantUsername($id)
+    {
+      return $this->db->get_where('participants', ['id_participants' => $id])->result()[0]->user;
+    }
     public function acceptParticipant($id, $offer_id, $participant)
     {
         $this->db->where('id_participants', $id)->update('participants', ['accepted' => true]);
-        //$this->db->where('offer_id', $offer_id)->where('accepted', false)->delete('participants'); - dopiero po potwierdzeniu podjęcia się pracy?
+    }
+    public function confirmParticipation($id, $offer_id)
+    {
+      $this->db->where('id_participants', $id)->update('participants', ['confirmed' => true]);
+      $this->db->where('offer_id', $offer_id)->where('confirmed', false)->delete('participants');
     }
     // public function getOffersID($username)
     // {
