@@ -15,13 +15,13 @@ class Offers_model extends MY_Model
                     $roomsData[$value] = true;
                 }
             }
-            $roomsData['id'] = $rooms_id;
+            $roomsData['id_rooms'] = $rooms_id;
             if ($todos != null) {
                 foreach ($todos as $key => $value) {
                     $todosData[$value] = true;
                 }
             }
-            $todosData['id'] = $todos_id;
+            $todosData['id_todos'] = $todos_id;
             $offersData = array(
               'datetime' => $datetime,
               'phone' => $phone,
