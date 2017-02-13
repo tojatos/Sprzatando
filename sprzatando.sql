@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas generowania: 10 Lut 2017, 23:37
+-- Czas generowania: 13 Lut 2017, 21:42
 -- Wersja serwera: 10.1.10-MariaDB
 -- Wersja PHP: 5.6.19
 
@@ -84,11 +84,10 @@ CREATE TABLE `participants` (
 --
 
 INSERT INTO `participants` (`id_participants`, `offer_id`, `user`, `price`, `text`, `accepted`, `confirmed`, `finished`) VALUES
-(1, 12, 'test', 34, 't', 1, 0, 0),
+(1, 12, 'test', 34, 't', 1, 1, 0),
 (3, 16, 'test', 4, 'fg', 0, 0, 0),
 (4, 17, 'test', 435, 'kakagh', 0, 0, 0),
-(5, 11, 'test', 45, '13rewrasfds', 1, 0, 0),
-(6, 11, 'test', 4523, '5323', 1, 0, 0);
+(6, 11, 'test', 4523, '5323', 1, 1, 0);
 
 -- --------------------------------------------------------
 
