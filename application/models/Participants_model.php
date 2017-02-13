@@ -45,7 +45,7 @@ class Participants_model extends MY_Model
     {
       return $this->db->get_where('participants', ['id_participants' => $id])->result()[0]->user;
     }
-    public function acceptParticipant($id, $offer_id, $participant)
+    public function acceptParticipant($id)
     {
         $this->db->where('id_participants', $id)->update('participants', ['accepted' => true]);
     }

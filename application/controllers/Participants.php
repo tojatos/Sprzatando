@@ -63,20 +63,21 @@ class Participants extends MY_Controller
     }
     public function acceptParticipant()
     {
+        $current_user = $this->session->user_name;
         $id = $this->input->post('id');
         $offer_id = $this->input->post('offer_id');
         $participant = $this->input->post('participant');
         try {
             if (!$this->session->isLogged) {
-                $this->showView('404');
+                throw new Exception('Nie jesteś zalogowany!');
             } else {
                 $this->load->model('Offers_model');
                 $offer_user = $this->Offers_model->getOfferUser($offer_id);
-                if ($offer_user != $this->session->user_name) {
+                if ($offer_user != $current_user) {
                     throw new Exception('Nie możesz zarządzać cudzymi zgłoszeniami!');
                 }
                 $this->load->model('Participants_model');
-                $this->Participants_model->acceptParticipant($id, $offer_id, $participant);
+                $this->Participants_model->acceptParticipant($id);
                 echo '<h2>Pomyślnie zaakceptowano ofertę użytkownika '.$participant.'.<h2><br>';
             }
         } catch (Exception $e) {
@@ -86,16 +87,16 @@ class Participants extends MY_Controller
     }
     public function confirmParticipation()
     {
-      $user = $this->session->user_name;
+      $current_user = $this->session->user_name;
       $id = $this->input->post('id');
       $offer_id = $this->input->post('offer_id');
       try {
           if (!$this->session->isLogged) {
-              $this->showView('404');
+              throw new Exception('Nie jesteś zalogowany!');
           } else {
               $this->load->model('Participants_model');
               $par_user = $this->Participants_model->getParticipantUsername($id);
-              if ($par_user != $this->session->user_name) {
+              if ($par_user != $current_user) {
                   throw new Exception('Nie możesz zarządzać cudzymi zgłoszeniami!');
               }
               $this->Participants_model->confirmParticipation($id, $offer_id);
@@ -105,6 +106,29 @@ class Participants extends MY_Controller
           echo '<h2>Potwierdzenie oferty nie powiodło się:</h2><br>';
           echo $e->getMessage();
       }
+    }
+    public function finishOffer()
+    {
+      // $current_user = $this->session->user_name;
+      // $id = $this->input->post('id');
+      // $offer_id = $this->input->post('offer_id');
+      // try {
+      //     if (!$this->session->isLogged) {
+      //         throw new Exception('Nie jesteś zalogowany!');
+      //     } else {
+      //         $this->load->model('Offers_model');
+      //         $offer_user = $this->Offers_model->getOfferUser($offer_id);
+      //         if ($offer_user != $current_user) {
+      //             throw new Exception('Nie możesz zarządzać cudzymi zgłoszeniami!');
+      //         }
+      //         $this->load->model('Participants_model');
+      //         $this->Participants_model->setAsCompleted($id);
+      //         echo '<h2>Pomyślnie zaakceptowano ofertę użytkownika '.$participant.'.<h2><br>';
+      //     }
+      // } catch (Exception $e) {
+      //     echo '<h2>Zaakceptowanie oferty nie powiodło się:</h2><br>';
+      //     echo $e->getMessage();
+      // }
     }
 
 }
