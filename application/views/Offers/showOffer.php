@@ -38,13 +38,17 @@
     </li>
   <?php endif; ?>
   </ul>
-  <?php if($offer->user != $this->session->user_name): ?>
+  <?php if(!$offer->active && $offer->user != $this->session->user_name): ?>
+    <div class="dark center">Ta oferta jest już zakończona!</div>
+  <?php elseif($offer->user != $this->session->user_name): ?>
   <form class="participate_form" method="post">
     <div class="input"><label>Proponowana cena: (zł)</label><input type="number" name="price" value=""></div>
     <div class="input"><label>Opis:</label><textarea name="text" placeholder="Opisz swoją propozycję"></textarea></div>
     <input type="hidden" name="offer_id" value="<?= $offer->id_offers ?>">
     <div class="input"><input type="submit" value="Zgłoś się do oferty"></div>
   </form>
+  <?php elseif($confirmedState): ?>
+    <div class="dark center">Oferta potwierdzona, <a class="btn black-btn" href="<?= site_url('Participants/'.$offer->id_offers) ?>">Zobacz zaakceptowane zgłoszenie</a></div>
   <?php else: ?>
     <a class="btn black-btn center" href="<?= site_url('Participants/'.$offer->id_offers) ?>">Zobacz zgłoszenia</a>
   <?php endif; ?>

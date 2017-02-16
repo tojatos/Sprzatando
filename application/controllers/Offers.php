@@ -66,9 +66,11 @@ class Offers extends MY_Controller
             if($offer == null){
               $this->showError('Nie ma takiej oferty w bazie');
             } else{
+              $this->load->model('Participants_model');
+              $confirmedState = $this->Participants_model->getConfirmedState($id);
               $data['title'] = 'Pokaż ofertę';
               $data['mainNav'] = $this->loadMainNav();
-              $data['content'] = $this->loadContent('Offers/showOffer', ['offer' => $offer]);
+              $data['content'] = $this->loadContent('Offers/showOffer', ['offer' => $offer, 'confirmedState' => $confirmedState]);
               $this->showMainView($data);
             }
         }

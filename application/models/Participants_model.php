@@ -34,16 +34,16 @@ class Participants_model extends MY_Model
     }
     public function getParticipantsByUser($username)
     {
-      $query = $this->db->get_where('participants', ['user' => $username]);
-      if ($query->result() == null) {
-          return null;
-      } else {
-          return $query->result();
-      }
+        $query = $this->db->get_where('participants', ['user' => $username]);
+        if ($query->result() == null) {
+            return null;
+        } else {
+            return $query->result();
+        }
     }
     public function getParticipantUsername($id)
     {
-      return $this->db->get_where('participants', ['id_participants' => $id])->result()[0]->user;
+        return $this->db->get_where('participants', ['id_participants' => $id])->result()[0]->user;
     }
     public function acceptParticipant($id)
     {
@@ -51,8 +51,30 @@ class Participants_model extends MY_Model
     }
     public function confirmParticipation($id, $offer_id)
     {
-      $this->db->where('id_participants', $id)->update('participants', ['confirmed' => true]);
-      $this->db->where('offer_id', $offer_id)->where('confirmed', false)->delete('participants');
+        $this->db->where('id_participants', $id)->update('participants', ['confirmed' => true]);
+        $this->db->where('offer_id', $offer_id)->where('confirmed', false)->delete('participants');
+    }
+    public function getConfirmedState($offer_id)
+    {
+      $query = $this->db->get_where('participants', ['offer_id' => $offer_id]);
+      if ($query->result() == null) {
+          return null;
+      } else {
+          return $query->result()[0]->confirmed;
+      }
+    }
+    public function getFinishedState($offer_id)
+    {
+      $query = $this->db->get_where('participants', ['offer_id' => $offer_id]);
+      if ($query->result() == null) {
+          return null;
+      } else {
+          return $query->result()[0]->finished;
+      }
+    }
+    public function setAsCompleted($id)
+    {
+        $this->db->where('id_participants', $id)->update('participants', ['finished' => true]);
     }
     // public function getOffersID($username)
     // {

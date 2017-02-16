@@ -2,7 +2,7 @@
 if ($offers != null){
   //dump($offers);
   foreach ($offers as $key=>$offer){
-    if(date_create($offer->datetime)<=date_create('now')){
+    if(date_create($offer->datetime)<=date_create('now')||!$offer->active){
       unset($offers[$key]);
     }
   }

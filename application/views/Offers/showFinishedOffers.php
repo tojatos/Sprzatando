@@ -1,8 +1,8 @@
 <?php
 if ($offers != null){
-  foreach ($offers as $offer){
-    if(date_create($offer->datetime)>date_create('now')){
-      array_pop($offers);
+  foreach ($offers as $key=>$offer){
+    if(date_create($offer->datetime)>date_create('now')&&$offer->active){
+      unset($offers[$key]);
     }
   }
 }

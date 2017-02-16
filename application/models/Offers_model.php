@@ -62,10 +62,20 @@ class Offers_model extends MY_Model
             return $query->result()[0];
         }
     }
-    public function getOfferUser($offer_id)
+    public function getOfferUser($id)
     {
-        $offer_user = $this->db->get_where('offers', ['id_offers' => $offer_id])->result()[0]->user;
+        $offer_user = $this->db->get_where('offers', ['id_offers' => $id])->result()[0]->user;
 
         return $offer_user;
+    }
+    public function getActiveState($id)
+    {
+      $activeState = $this->db->get_where('offers', ['id_offers' => $id])->result()[0]->active;
+
+      return $activeState;
+    }
+    public function setAsNotActive($id)
+    {
+        $this->db->where('id_offers', $id)->update('offers', ['active' => false]);
     }
 }

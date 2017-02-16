@@ -1,9 +1,9 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <?php
 if ($participants != null){
-  foreach ($participants as $par){
+  foreach ($participants as $key=>$par){
     if(!$par->finished){
-      array_pop($participants);
+      unset($participants[$key]);
     }
   }
 }
@@ -15,6 +15,7 @@ if ($participants != null){
     <div class="offer">
       <a href="<?= site_url('Offer/'.$par->offer_id) ?>">Link do oferty</a>
       <ul>
+        <li>Id oferty: <?= $par->offer_id ?></li>
         <li>Cena: <?= $par->price ?></li>
         <li>Opis: <?= $par->text ?></li>
       </ul>

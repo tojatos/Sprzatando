@@ -21,11 +21,19 @@ class Participants extends MY_Controller
           ]);
 
             $this->load->model('Offers_model');
+            $this->load->model('Participants_model');
+            $activeState = $this->Offers_model->getActiveState($offer_id);
+            if (!$activeState) {
+                throw new Exception('Ta oferta jest już zakończona!');
+            }
             $offer_user = $this->Offers_model->getOfferUser($offer_id);
             if ($offer_user == $participant) {
                 throw new Exception('Nie możesz zgłosić się do własnej oferty!');
             }
-            $this->load->model('Participants_model');
+            $confirmedState = $this->Participants_model->getConfirmedState($offer_id);
+            if ($confirmedState) {
+                throw new Exception('Wykonawca został już zatwierdzony!');
+            }
             $try = $this->Participants_model->participate($offer_id, $price, $text, $participant);
             if ($try != null) {
                 throw new Exception($try);
@@ -53,7 +61,7 @@ class Participants extends MY_Controller
                     throw new Exception('Jeszcze się nikt nie zgłosił do tej oferty.');
                 }
                 $data['mainNav'] = $this->loadMainNav();
-                $data['title'] = "Pokaż zgłoszenia";
+                $data['title'] = 'Pokaż zgłoszenia';
                 $data['content'] = $this->loadContent('Participants/showParticipants', ['participants' => $participants]);
                 $this->showMainView($data);
             }
@@ -72,6 +80,10 @@ class Participants extends MY_Controller
                 throw new Exception('Nie jesteś zalogowany!');
             } else {
                 $this->load->model('Offers_model');
+                $activeState = $this->Offers_model->getActiveState($offer_id);
+                if (!$activeState) {
+                    throw new Exception('Ta oferta jest już zakończona!');
+                }
                 $offer_user = $this->Offers_model->getOfferUser($offer_id);
                 if ($offer_user != $current_user) {
                     throw new Exception('Nie możesz zarządzać cudzymi zgłoszeniami!');
@@ -87,48 +99,55 @@ class Participants extends MY_Controller
     }
     public function confirmParticipation()
     {
-      $current_user = $this->session->user_name;
-      $id = $this->input->post('id');
-      $offer_id = $this->input->post('offer_id');
-      try {
-          if (!$this->session->isLogged) {
-              throw new Exception('Nie jesteś zalogowany!');
-          } else {
-              $this->load->model('Participants_model');
-              $par_user = $this->Participants_model->getParticipantUsername($id);
-              if ($par_user != $current_user) {
-                  throw new Exception('Nie możesz zarządzać cudzymi zgłoszeniami!');
-              }
-              $this->Participants_model->confirmParticipation($id, $offer_id);
-              echo '<h2>Pomyślnie potwierdzono ofertę o id '.$id.'.<h2><br>';
-          }
-      } catch (Exception $e) {
-          echo '<h2>Potwierdzenie oferty nie powiodło się:</h2><br>';
-          echo $e->getMessage();
-      }
+        $current_user = $this->session->user_name;
+        $id = $this->input->post('id');
+        $offer_id = $this->input->post('offer_id');
+        try {
+            if (!$this->session->isLogged) {
+                throw new Exception('Nie jesteś zalogowany!');
+            }
+            $this->load->model('Offers_model');
+            $activeState = $this->Offers_model->getActiveState($offer_id);
+            if (!$activeState) {
+                throw new Exception('Ta oferta jest już zakończona!');
+            }
+            $this->load->model('Participants_model');
+            $par_user = $this->Participants_model->getParticipantUsername($id);
+            if ($par_user != $current_user) {
+                throw new Exception('Nie możesz zarządzać cudzymi zgłoszeniami!');
+            }
+            $this->Participants_model->confirmParticipation($id, $offer_id);
+            $this->Offers_model->setAsNotActive($offer_id);
+            echo '<h2>Pomyślnie potwierdzono ofertę o id '.$id.'.<h2><br>';
+        } catch (Exception $e) {
+            echo '<h2>Potwierdzenie oferty nie powiodło się:</h2><br>';
+            echo $e->getMessage();
+        }
     }
     public function finishOffer()
     {
-      // $current_user = $this->session->user_name;
-      // $id = $this->input->post('id');
-      // $offer_id = $this->input->post('offer_id');
-      // try {
-      //     if (!$this->session->isLogged) {
-      //         throw new Exception('Nie jesteś zalogowany!');
-      //     } else {
-      //         $this->load->model('Offers_model');
-      //         $offer_user = $this->Offers_model->getOfferUser($offer_id);
-      //         if ($offer_user != $current_user) {
-      //             throw new Exception('Nie możesz zarządzać cudzymi zgłoszeniami!');
-      //         }
-      //         $this->load->model('Participants_model');
-      //         $this->Participants_model->setAsCompleted($id);
-      //         echo '<h2>Pomyślnie zaakceptowano ofertę użytkownika '.$participant.'.<h2><br>';
-      //     }
-      // } catch (Exception $e) {
-      //     echo '<h2>Zaakceptowanie oferty nie powiodło się:</h2><br>';
-      //     echo $e->getMessage();
-      // }
+        $current_user = $this->session->user_name;
+        $id = $this->input->post('id');
+        $offer_id = $this->input->post('offer_id');
+        try {
+            if (!$this->session->isLogged) {
+                throw new Exception('Nie jesteś zalogowany!');
+            }
+            $this->load->model('Offers_model');
+            $this->load->model('Participants_model');
+            $finishedState = $this->Participants_model->getFinishedState($offer_id);
+            if ($finishedState) {
+                throw new Exception('Oferta została już ukończona!');
+            }
+            $offer_user = $this->Offers_model->getOfferUser($offer_id);
+            if ($offer_user != $current_user) {
+                throw new Exception('Nie możesz zarządzać cudzymi zgłoszeniami!');
+            }
+            $this->Participants_model->setAsCompleted($id);
+            echo '<h2>Pomyślnie zakończono ofertę.<h2><br>';
+        } catch (Exception $e) {
+            echo '<h2>Zakończenie oferty nie powiodło się:</h2><br>';
+            echo $e->getMessage();
+        }
     }
-
 }
