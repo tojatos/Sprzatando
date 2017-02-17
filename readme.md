@@ -3,7 +3,6 @@
 Projekt mający na celu zwiększenie umiejętności z zakresu Web Development'u.
 Technologie wykorzystane:
 - CodeIgniter
-<!--- AngularJS -->
 - Sass
 - JQuery
 
@@ -51,7 +50,7 @@ Wykonawca - użytkownik, który zgłosił się do przyjęcia oferty
 
 4. System zawiera stronę z listą wystawionych ofert
   - Strona ta jest widoczna tylko dla zalogowanych użytkowników
-  - Widoczne są tylko oferty o czasie wykonania późniejszym niż czas przeglądania
+  - Widoczne są tylko aktywne oferty o czasie wykonania późniejszym niż czas przeglądania
   - To miejsce w systemie ma umożliwiać filtrowania wpisów:
     - po cenie (dwa pola „od” i „do”)
     - klikane dla każdego pokoju do sprzątania i czynności do wykonania
@@ -99,6 +98,20 @@ Wykonawca - użytkownik, który zgłosił się do przyjęcia oferty
   - Na swojej stronie użytkownik widzi wystawione przez siebie oferty, oraz oferty, do których się zgłosił
 
 11. W systemie istnieje widok, który wyświetla ranking wykonawców bazując na średniej ocen.
+
+12. Administrator ma następujące strony:
+  - strona z ofertami
+    - są tu wszystkie dane ofert
+    - Administrator może usuwać oferty
+  - strona ze zgłoszeniami
+    - są tu wszystkie dane zgłoszeń
+    - Administrator może usuwać zgłoszenia
+  - strona z użytkownikami
+    - są tu wszystkie dane użytkowników
+    - Administrator może usuwać lub blokować użytkowników
+    - Administrator może nadać uprawnienia Administratora użytkownikowi
+
+
 
 #Instalacja
 
