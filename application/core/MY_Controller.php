@@ -21,7 +21,7 @@ class MY_Controller extends CI_Controller
     {
         return $this->load->view('inc/mainNav', '', true);
     }
-    protected function showError($message)
+    protected function showError($message, $data = null)
     {
         $data['mainNav'] = $this->loadMainNav();
         $data['message'] = $message;

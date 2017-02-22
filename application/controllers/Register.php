@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Register extends CI_Controller
+class Register extends MY_Controller
 {
     public function zarejestruj()
     {
@@ -15,13 +15,17 @@ class Register extends CI_Controller
               'hasło' => [$password, 50],
               'potwierdzenie hasła' => [$password_repeat, 50],
           ]);
+            if (!valid_email($email)){
+              throw new Exception('Wprowadzony e-mail jest nieprawidłowy!');
+            }
+
             if ($password != $password_repeat) {
                 throw new Exception('Hasło różni się od hasła powtórzonego!');
             }
             $this->load->model('User_model');
             $try = $this->User_model->createUser($login, $password, $email);
             if ($try != null) throw new Exception($try);
-            //$this->sendVerifyEmail($email); TODO
+            //$this->sendVerifyEmail($email);
             echo '<h2>Pomyślnie zarejestrowano.</h2><br>';
             echo 'Po potwierdzeniu wiadomości wysłanej na e-mail będzie można się <a href="'.site_url('Login').'">zalogować</a>.';
         } catch (Exception $e) {
@@ -29,17 +33,23 @@ class Register extends CI_Controller
             echo $e->getMessage();
         }
     }
-    // public function sendVerifyEmail($email)
-    // {
-    //   $this->load->library('email');
-    //   $this->email->from('noreply@'.base_url(), 'Verifier');
-    //   $this->email->to($email);
-    //   $this->email->subject('Sprzątando - Weryfikacja');
-    //   $this->email->message('Potwierdź swoją rejestrację klikając w <a href="'.base_url().md5("hash13".$email).'">ten link</a>');
-    //   $this->email->send();
-    // }
-    // public function test()
-    // {
-    //   $this->sendVerifyEmail("tojatos@gmail.com");
-    // }
+    public function sendVerifyEmail($email)
+    {
+      $this->load->library('email');
+      $config['mailtype'] = 'html';
+      $this->email->initialize($config);
+      $this->email->from('noreply@sprzatando', 'Verifier');
+      $this->email->to($email);
+      $this->email->subject('Sprzątando - Weryfikacja');
+      $this->email->message('
+      <h1>Witamy nowego użytkownika!</h1>
+      Możesz potwierdzić swoją rejestrację klikając w <a href="'.site_url("Verify/").sha1($email.HASH_KEY).'">ten link</a>.<br><br>
+      Jeżeli nie rejestrowałeś się na '.base_url().' zignoruj tę wiadomość.
+      ');
+      $this->email->send();
+    }
+    public function test()
+    {
+      $this->sendVerifyEmail("tojatos@gmail.com");
+    }
 }

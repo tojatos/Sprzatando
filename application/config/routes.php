@@ -8,5 +8,6 @@ $route['Offers'] = 'Offers/showOffers';
 $route['Offer/(:num)'] = 'Offers/showOffer/$1';
 $route['User/(:any)'] = 'Users/showUser/$1';
 $route['Participants/(:num)'] = 'Participants/showParticipants/$1';
+$route['Verify/(:any)'] = 'Verify/index/$1';
 $route['404_override'] = 'Main/error404';
 $route['translate_uri_dashes'] = FALSE;

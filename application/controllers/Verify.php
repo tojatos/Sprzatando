@@ -1,19 +1,25 @@
 <?php
+
 defined('BASEPATH') or exit('No direct script access allowed');
-class Verify extends CI_Controller
+class Verify extends MY_Controller
 {
-    public function zweryfikuj()
+    public function index($code)
     {
         try {
-
-            // $this->load->model('User_model');
-            // $try = $this->User_model->createUser($login, $password, $email);
-            // if ($try != null) throw new Exception($try);
-            // echo '<h2>Pomyślnie zarejestrowano.</h2><br>';
-            // echo 'Po potwierdzeniu wiadomości wysłanej na e-mail będzie można się <a href="'.base_url().'Login">zalogować</a>.';
+            $this->load->model('Verify_model');
+            $notVerifiedEmails = $this->Verify_model->getNotVerifiedEmails();
+            if ($notVerifiedEmails == null) {
+                throw new Exception('Wszyscy użytkownicy są już zweryfikowani!');
+            }
+            $email = $this->Verify_model->getEmailToVerify($notVerifiedEmails, $code);
+            if ($email == null) {
+                throw new Exception('Twój kod weryfikacyjny jest nieprawidłowy!');
+            }
+            $try = $this->Verify_model->verify($email);
+            //to nie błąd tylko pokazanie wiadomości
+            $this->showError('Pomyślnie zweryfikowano, możesz się już zalogować.');
         } catch (Exception $e) {
-            echo '<h2>Weryfikacja nie powiodła się:</h2><br>';
-            echo $e->getMessage();
+            $this->showError($e->getMessage());
         }
     }
 }
