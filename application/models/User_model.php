@@ -7,7 +7,7 @@ class User_model extends CI_model
     public function createUser($login, $password, $email, $type = 'standard')
     {
         try {
-            $isEmail = $this->db->get_where('users', array('e-mail' => $email), 1);
+            $isEmail = $this->db->get_where('users', array('email' => $email), 1);
             if ($isEmail->result() != null) {
                 throw new Exception('Taki e-mail już istnieje! Wpisz inny.<br>');
             }
@@ -18,7 +18,7 @@ class User_model extends CI_model
             $data = array(
           'login' => $login,
           'password' => sha1($password.HASH_KEY),
-          'e-mail' => $email,
+          'email' => $email,
           'type' => $type,
           'verified' => false,
           'blocked' => false

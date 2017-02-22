@@ -87,6 +87,10 @@ Wykonawca - użytkownik, który zgłosił się do przyjęcia oferty
 
 9. Po wykonaniu zadania Zgłaszający może potwierdzić wykonanie zadania
   - po potwierdzeniu wykonania zadania Zgłaszający i Wykonawca mogą sobie wystawić opinię
+    - niezależnie od ilości wykonanych zadań jeden użytkownik może wystawić tylko jedną opinię drugiemu użytkownikowi
+    - Formularz opinii zawiera pola:
+      - ocenę (od 1 do 5 gwiazdek) `type: number, max-length: 1`
+      - opis `type: text, max-length: 255`
 
 10. Każdy użytkownik ma swoją stronę
   - Strona ta jest widoczna tylko dla zalogowanych użytkowników

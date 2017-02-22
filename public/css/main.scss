@@ -44,7 +44,6 @@ $background_3: url('../images/footer_lodyas.png');
         }
     }
 
-
     input[type="date"],
     input[type="email"],
     input[type="number"],
@@ -115,13 +114,19 @@ html {
         }
 
         .participate_form {
-            @include generateForm(520px);
+            @include generateForm(545px);
             margin: 0 auto;
         }
-        .user_message_form{
-          @include generateForm(400px);
-          margin: 0 auto;
+
+        .user_message_form {
+            @include generateForm(400px);
+            margin: 0 auto;
         }
+        .opinion_form {
+            @include generateForm(400px);
+            margin: 0 auto;
+        }
+
         .offer {
             display: block;
             margin: 5px 0;
@@ -134,10 +139,10 @@ html {
                 text-decoration: none;
                 background-color: #974916;
             }
-
         }
-        .applicator{
-          border: 1px solid red;
+
+        .applicator {
+            border: 1px solid red;
         }
     }
 

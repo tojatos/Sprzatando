@@ -26,4 +26,8 @@
     <?= $user_fin_par ?>
   </div>
 </div>
+<?php else: ?>
+  <?php if($haveFinishedTransaction): ?>
+    <?= $addOpinionForm ?>
+  <?php endif; ?>
 <?php endif; ?>

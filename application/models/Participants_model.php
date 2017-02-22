@@ -76,6 +76,26 @@ class Participants_model extends MY_Model
     {
         $this->db->where('id_participants', $id)->update('participants', ['finished' => true]);
     }
+    public function haveFinishedTransaction($user1, $user2)
+    {
+      $this->db->select('participants.finished')
+        ->from('participants')
+        ->join('offers', 'participants.offer_id = offers.id_offers')
+        ->where('finished', true)
+          ->group_start()
+            ->where('participants.user', $user1)
+            ->where('offers.user', $user2)
+            ->or_where('participants.user', $user2)
+            ->where('offers.user', $user1)
+          ->group_end()
+          ->limit(1);
+      $query = $this->db->get();
+      if ($query->result() == null) {
+          return null;
+      } else {
+          return $query->result()[0]->finished;
+      }
+    }
     // public function getOffersID($username)
     // {
     //     $query = $this->db->distinct()->select('offer_id')->get_where('participants', ['user' => $username]);
