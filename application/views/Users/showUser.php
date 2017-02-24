@@ -1,5 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-<?= $user_message ?>
+<h2 class="h2">O sobie:</h2><?= $user_message ?>
+<?= $user_opinions ?>
 <?php if ($this->session->user_name == $user->login):  ?>
 <form class="user_message_form" method="post">
   <h2 class="center">Zmiana opisu</h2>
