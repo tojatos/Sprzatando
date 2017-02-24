@@ -49,11 +49,12 @@ class User_model extends CI_model
     public function getUserMessage($user)
     {
         $query = $this->db->get_where('user_messages', array('user' => $user), 1);
-        if ($query->result() == null) {
+        $messages = $query->result();
+        if ($messages == null) {
             return null;
         }
         else {
-          return $query->result()[0]->message;
+          return $messages[0]->message;
         }
     }
 }

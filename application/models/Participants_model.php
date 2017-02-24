@@ -22,63 +22,74 @@ class Participants_model extends MY_Model
             return $e->getMessage();
         }
     }
-    public function getParticipants($offer_id)
+    public function getParticipantsByOffer($offer_id)
     {
         $query = $this->db->get_where('participants', ['offer_id' => $offer_id]);
-
-        if ($query->result() == null) {
+        $participants = $query->result();
+        if ($participants == null) {
             return null;
         } else {
-            return $query->result();
+            return $participants;
         }
     }
     public function getParticipantsByUser($username)
     {
         $query = $this->db->get_where('participants', ['user' => $username]);
-        if ($query->result() == null) {
+        $participants = $query->result();
+        if ($participants == null) {
             return null;
         } else {
-            return $query->result();
+            return $participants;
         }
     }
     public function getParticipantUsername($id)
     {
-        return $this->db->get_where('participants', ['id_participants' => $id])->result()[0]->user;
+        $query = $this->db->get_where('participants', ['id_participants' => $id]);
+        $participants = $query->result();
+        if ($participants == null) {
+            return null;
+        } else {
+            return $participants[0]->user;
+        }
+    }
+    public function getConfirmedState($offer_id)
+    {
+        $query = $this->db->get_where('participants', ['offer_id' => $offer_id]);
+        if ($query->result() == null) {
+            return null;
+        } else {
+            return $query->result()[0]->confirmed;
+        }
+    }
+    public function getFinishedState($offer_id)
+    {
+        $query = $this->db->get_where('participants', ['offer_id' => $offer_id]);
+        if ($query->result() == null) {
+            return null;
+        } else {
+            return $query->result()[0]->finished;
+        }
     }
     public function acceptParticipant($id)
     {
         $this->db->where('id_participants', $id)->update('participants', ['accepted' => true]);
     }
-    public function confirmParticipation($id, $offer_id)
+    public function confirmParticipation($id)
     {
         $this->db->where('id_participants', $id)->update('participants', ['confirmed' => true]);
+    }
+    public function deleteUnconfirmedParticipants($offer_id)
+    {
         $this->db->where('offer_id', $offer_id)->where('confirmed', false)->delete('participants');
     }
-    public function getConfirmedState($offer_id)
-    {
-      $query = $this->db->get_where('participants', ['offer_id' => $offer_id]);
-      if ($query->result() == null) {
-          return null;
-      } else {
-          return $query->result()[0]->confirmed;
-      }
-    }
-    public function getFinishedState($offer_id)
-    {
-      $query = $this->db->get_where('participants', ['offer_id' => $offer_id]);
-      if ($query->result() == null) {
-          return null;
-      } else {
-          return $query->result()[0]->finished;
-      }
-    }
+
     public function setAsCompleted($id)
     {
         $this->db->where('id_participants', $id)->update('participants', ['finished' => true]);
     }
     public function haveFinishedTransaction($user1, $user2)
     {
-      $this->db->select('participants.finished')
+        $this->db->select('participants.finished')
         ->from('participants')
         ->join('offers', 'participants.offer_id = offers.id_offers')
         ->where('finished', true)
@@ -89,26 +100,11 @@ class Participants_model extends MY_Model
             ->where('offers.user', $user1)
           ->group_end()
           ->limit(1);
-      $query = $this->db->get();
-      if ($query->result() == null) {
-          return null;
-      } else {
-          return $query->result()[0]->finished;
-      }
+        $query = $this->db->get();
+        if ($query->result() == null) {
+            return null;
+        } else {
+            return $query->result()[0]->finished;
+        }
     }
-    // public function getOffersID($username)
-    // {
-    //     $query = $this->db->distinct()->select('offer_id')->get_where('participants', ['user' => $username]);
-    //     $result = $query->result();
-    //     if ($result == null) {
-    //         return null;
-    //     } else {
-    //         $offers_ids = [];
-    //         foreach ($result as $obj) {
-    //             array_push($offers_ids, $obj->offer_id);
-    //         }
-
-    //         return $offers_ids;
-    //     }
-    // }
 }

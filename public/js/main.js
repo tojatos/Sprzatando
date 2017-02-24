@@ -69,14 +69,14 @@ $(function() {
  //    }
  //   });
  // });
- sendPostDataOnSubmit('.login_form', 'Login/zaloguj', true);
- sendPostDataOnSubmit('.logout_form', 'Login/wyloguj', true);
- sendPostDataOnSubmit('.register_form', 'Register/zarejestruj');
- sendPostDataOnSubmit('.offer_form', 'Offers/addOffer');
- sendPostDataOnSubmit('.participate_form', 'Participants/participate');
- sendPostDataOnSubmit('.accept_participant_form', 'Participants/acceptParticipant', true);
- sendPostDataOnSubmit('.user_message_form', 'Users/changeUserMessage', true);
- sendPostDataOnSubmit('.confirm_form', 'Participants/confirmParticipation', true);
- sendPostDataOnSubmit('.finish_offer_form', 'Participants/finishOffer', true);
- sendPostDataOnSubmit('.opinion_form', 'Opinions/addOpinion', true);
+ sendPostDataOnSubmit('.login_form', 'Login/ajax_login', true);
+ sendPostDataOnSubmit('.logout_form', 'Login/ajax_logout', true);
+ sendPostDataOnSubmit('.register_form', 'Register/ajax_register');
+ sendPostDataOnSubmit('.offer_form', 'Offers/ajax_addOffer');
+ sendPostDataOnSubmit('.participate_form', 'Participants/ajax_participate');
+ sendPostDataOnSubmit('.accept_participant_form', 'Participants/ajax_acceptParticipant', true);
+ sendPostDataOnSubmit('.user_message_form', 'Users/ajax_changeUserMessage', true);
+ sendPostDataOnSubmit('.confirm_form', 'Participants/ajax_confirmParticipation', true);
+ sendPostDataOnSubmit('.finish_offer_form', 'Participants/ajax_finishOffer', true);
+ sendPostDataOnSubmit('.opinion_form', 'Opinions/ajax_addOpinion', true);
 });

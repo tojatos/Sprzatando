@@ -6,16 +6,16 @@ class Login_model extends CI_model
     public function login($login, $password)
     {
         try {
-            $query = $this->db->get_where('users', array('login' => $login, 'password' => sha1($password.HASH_KEY)), 1);
+            $query = $this->db->get_where('users', ['login' => $login, 'password' => sha1($password.HASH_KEY)], 1);
             $users = $query->result();
             if ($users == null) {
                 throw new Exception('Nieprawidłowe dane logowania.<br>');
             }
             $user = $users[0];
             if ($user->verified == false) {
-                throw new Exception('Musisz zweryfikować swoje konto przed zalogowaniem!');
+                throw new Exception('Musisz zweryfikować swoje konto przed zalogowaniem!<br>');
             }
-            session_unset();
+
             $this->session->isLogged = true;
             $this->session->user_name = $user->login;
             $this->session->user_type = $user->type;
