@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: sprzatando
 -- ------------------------------------------------------
--- Server version	5.7.16-0ubuntu0.16.04.1-log
+-- Server version	5.7.17-0ubuntu0.16.04.1-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -61,7 +61,7 @@ CREATE TABLE `opinions` (
   `from_user` varchar(255) NOT NULL,
   `to_user` varchar(255) NOT NULL,
   PRIMARY KEY (`id_opinions`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE `opinions` (
 
 LOCK TABLES `opinions` WRITE;
 /*!40000 ALTER TABLE `opinions` DISABLE KEYS */;
-INSERT INTO `opinions` VALUES (2,5,'a masz piąteczkę','tojatos','test');
+INSERT INTO `opinions` VALUES (2,5,'a masz piąteczkę','tojatos','test'),(3,3,'3/5','test','tojatos');
 /*!40000 ALTER TABLE `opinions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,7 +198,7 @@ CREATE TABLE `users` (
   `verified` tinyint(1) NOT NULL,
   `blocked` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_users`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -207,7 +207,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (7,'tojatos','dfd78a16b381b25866f43fc5ee1758438d81cd14','tojatos@gmail.com','standard',1,0),(9,'admin','7c99cb247ff984c46570e8331ef65ae5fe9ae76c','admin@localhost','administrator',1,0),(10,'test','3afeaa52bf36f292938d8ad6709643462a200960','test@test.pl','standard',1,0),(11,'Minecraft','b0fa7aa8daa7fe70d1e8dbcc2651f5a749db65d6','hermiona@mail.pl','standard',1,0),(12,'maciej_bajda','3afeaa52bf36f292938d8ad6709643462a200960','maciej.bajda@mbajda.pro','standard',1,0);
+INSERT INTO `users` VALUES (7,'tojatos','dfd78a16b381b25866f43fc5ee1758438d81cd14','tojatos@gmail.com','standard',1,0),(9,'admin','7c99cb247ff984c46570e8331ef65ae5fe9ae76c','admin@localhost','administrator',1,0),(10,'test','3afeaa52bf36f292938d8ad6709643462a200960','test@test.pl','standard',1,0),(11,'Minecraft','b0fa7aa8daa7fe70d1e8dbcc2651f5a749db65d6','hermiona@mail.pl','standard',1,0),(12,'maciej_bajda','3afeaa52bf36f292938d8ad6709643462a200960','maciej.bajda@mbajda.pro','standard',1,0),(13,'lul','d86f394856933f22217741c096844d2a0eb601f9','lul@lul.lul','standard',0,0),(14,'tost','d86f394856933f22217741c096844d2a0eb601f9','tojatos@mail.com','standard',0,0),(15,'toster','d86f394856933f22217741c096844d2a0eb601f9','tojadtos@mail.com','standard',0,0),(16,'testf','5245bb6491875746220d19ad5a6888d86b0b4c77','tojads@mail.com','standard',0,0),(17,'dfsdf','5245bb6491875746220d19ad5a6888d86b0b4c77','toj324ads@mail.com','standard',0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -220,4 +220,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-22 10:51:57
+-- Dump completed on 2017-02-24 22:28:53
