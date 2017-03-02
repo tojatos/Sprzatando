@@ -37,17 +37,17 @@ class Offers extends MY_Controller
     }
     private function validate_ajax_addOffer($date, $time, $phone, $email, $place, $price, $rooms, $todos)
     {
-      validateForm([
-        'data' => [$date, 50],
-        'czas' => [$time, 50],
-        'telefon' => [$phone, 50],
-        'miejsce' => [$place, 255],
-        'cena' => [$price, 50],
-        'e-mail' => [$email, 50],
-      ]);
-      if ($rooms == null && $todos == null) {
-          throw new Exception('Musisz wybrać przynajmniej jeden pokój lub czynność!');
-      }
+        validateForm([
+                'data' => [$date, 50],
+                'czas' => [$time, 50],
+                'telefon' => [$phone, 50],
+                'miejsce' => [$place, 255],
+                'cena' => [$price, 50],
+                'e-mail' => [$email, 50],
+                ]);
+        if ($rooms == null && $todos == null) {
+            throw new Exception('Musisz wybrać przynajmniej jeden pokój lub czynność!');
+        }
     }
     public function showOffers()
     {
@@ -56,10 +56,11 @@ class Offers extends MY_Controller
         } else {
             $this->load->model('Offers_model');
             $offers = $this->Offers_model->getOffers();
+            $showOffersContent = $this->loadContent('Offers/showOffers', ['offers' => $offers]);
 
             $data['title'] = 'Pokaż oferty';
             $data['mainNav'] = $this->loadMainNav();
-            $data['content'] = $this->loadContent('Offers/showOffers', ['offers' => $offers]);
+            $data['content'] = $this->loadContent('Offers/index', ['showOffersContent' => $showOffersContent]);
             $this->showMainView($data);
         }
     }

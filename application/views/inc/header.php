@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="<?= site_url('public/css/main.css') ?>">
     <script src="<?= site_url('public/js/jquery-3.1.1.min.js') ?>"></script>
     <script src="<?= site_url('public/js/main.js') ?>"></script>
+    <script src="<?= site_url('public/js/filter.js') ?>"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sprzątando</title>
