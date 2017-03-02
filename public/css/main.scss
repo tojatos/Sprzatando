@@ -132,6 +132,14 @@ html {
             @include generateForm(550px);
             margin: 0 auto;
         }
+        .forgotten_password_form {
+            @include generateForm(400px);
+            margin: 0 auto;
+        }
+        .change_password_form {
+            @include generateForm(450px);
+            margin: 0 auto;
+        }
 
         .offer {
             display: block;

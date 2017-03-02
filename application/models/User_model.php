@@ -16,12 +16,12 @@ class User_model extends CI_model
                 throw new Exception('Taki login już istnieje! Wpisz inny.<br>');
             }
             $data = array(
-          'login' => $login,
-          'password' => sha1($password.HASH_KEY),
-          'email' => $email,
-          'type' => $type,
-          'verified' => false,
-          'blocked' => false
+              'login' => $login,
+              'password' => sha1($password.HASH_KEY),
+              'email' => $email,
+              'type' => $type,
+              'verified' => false,
+              'blocked' => false
         );
             $this->db->insert('users', $data);
         } catch (Exception $e) {
@@ -56,5 +56,39 @@ class User_model extends CI_model
         else {
           return $messages[0]->message;
         }
+    }
+    public function addPasswordChangeRequest($email, $code)
+    {
+      try {
+          $isEmail = $this->db->get_where('password_change_requests', ['email' => $email], 1);
+          if ($isEmail->result() != null) {
+              throw new Exception('Na ten e-mail już wysłano prośbę o zmianę hasła.<br>');
+          }
+          $data = array(
+            'email' => $email,
+            'code' => $code
+      );
+          $this->db->insert('password_change_requests', $data);
+      } catch (Exception $e) {
+          return $e->getMessage();
+      }
+    }
+    public function changePassword($code, $newPassword)
+    {
+      $email = $this->db->get_where('password_change_requests', ['code' => $code], 1)->result()[0]->email;
+      $this->db->where('email', $email)->update('users', ['password' => sha1($newPassword.HASH_KEY)]);
+    }
+    public function validateCode($code)
+    {
+      $isCode = $this->db->where('code', $code)->get('password_change_requests')->result();
+      if($isCode==null){
+        return false;
+      } else {
+        return true;
+      }
+    }
+    public function removeRequest($code)
+    {
+      $this->db->where('code', $code)->delete('password_change_requests');
     }
 }

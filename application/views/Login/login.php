@@ -8,6 +8,7 @@
   <div class="input"><input type="submit" value="Zaloguj się"></div>
 </form>
 <a href="<?= base_url() ?>" class="center">Powrót do strony głównej</a>
+<a href="<?= site_url('ForgottenPassword') ?>" class="center">Nie pamiętam hasła</a>
 <?php
   else:
     header('Location: '.base_url());

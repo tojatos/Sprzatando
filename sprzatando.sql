@@ -34,7 +34,7 @@ CREATE TABLE `offers` (
   `user` varchar(50) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_offers`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `offers` (
 
 LOCK TABLES `offers` WRITE;
 /*!40000 ALTER TABLE `offers` DISABLE KEYS */;
-INSERT INTO `offers` VALUES (4,'2017-01-16 21:37:00','123456789','f@email.com','ul. Testowa',343,1,1,'tojatos',1),(5,'2017-01-16 12:34:00','2353','f@email.com','ul. Testowa',343,2,2,'tojatos',1),(6,'2017-01-16 12:34:00','2353','f@email.com','ul. Testowa',343,3,3,'tojatos',1),(7,'2017-01-17 13:00:00','2145','tojatos@interia.pl','twitch chat',0,4,4,'tojatos',1),(8,'2017-01-17 13:00:00','2145','tojatos@interia.pl','twitch chat',0,5,5,'tojatos',1),(9,'2017-01-17 13:00:00','2145','tojatos@interia.pl','twitch chat',0,6,6,'tojatos',1),(10,'2017-02-26 21:37:00','123456789','wyjebnik@gmail.com','za garażami 65/2 Opole',50,7,7,'tojatos',1),(11,'2017-02-25 06:00:00','134531462','email@email.com','Bardzo ciekawe miejsce ;)',500,8,8,'tojatos',0),(12,'2017-07-28 12:34:00','885234212','foter@f55.com','ul. Kościuszki Opole główne',831,9,9,'tojatos',0),(13,'2017-02-24 21:00:00','3463246234632463','testowy@test.pl','ul. Sienkiewicza 4/3',500,10,10,'test',0),(14,'2017-02-24 21:00:00','3463246234632463','testowy@test.pl','ul. Sienkiewicza 4/3',500,11,11,'test',1),(15,'2017-02-24 21:00:00','3463246234632463','testowy@test.pl','ul. Sienkiewicza 536',23,12,12,'test',1),(16,'2017-03-18 23:59:00','505707909','hermiona@mail.pl','ul.moja hacjęda',2147483647,13,13,'Minecraft',1),(17,'2017-03-18 23:59:00','505707909','hermiona@mail.pl','ul.moja hacjęda',2147483647,14,14,'Minecraft',1),(18,'2017-02-14 15:58:00','505707909','hermiona@mail.pl','ul. dupowa 5/405',89,15,15,'Minecraft',1),(19,'0000-00-00 00:00:00','ghjkkkkkkkk','ghfstdrgfffr@frt','hhhhhhhhhhh',-1,16,16,'Minecraft',1),(20,'2017-02-25 00:47:00','2323523523232352352323','std@gsd.pl','Opole',909,17,17,'test',1);
+INSERT INTO `offers` VALUES (4,'2017-01-16 21:37:00','123456789','f@email.com','ul. Testowa',343,1,1,'tojatos',1),(5,'2017-01-16 12:34:00','2353','f@email.com','ul. Testowa',343,2,2,'tojatos',1),(6,'2017-01-16 12:34:00','2353','f@email.com','ul. Testowa',343,3,3,'tojatos',1),(7,'2017-01-17 13:00:00','2145','tojatos@interia.pl','twitch chat',0,4,4,'tojatos',1),(8,'2017-01-17 13:00:00','2145','tojatos@interia.pl','twitch chat',0,5,5,'tojatos',1),(9,'2017-01-17 13:00:00','2145','tojatos@interia.pl','twitch chat',0,6,6,'tojatos',1),(10,'2017-02-26 21:37:00','123456789','wyjebnik@gmail.com','za garażami 65/2 Opole',50,7,7,'tojatos',1),(11,'2017-02-25 06:00:00','134531462','email@email.com','Bardzo ciekawe miejsce ;)',500,8,8,'tojatos',0),(12,'2017-07-28 12:34:00','885234212','foter@f55.com','ul. Kościuszki Opole główne',831,9,9,'tojatos',0),(13,'2017-02-24 21:00:00','3463246234632463','testowy@test.pl','ul. Sienkiewicza 4/3',500,10,10,'test',0),(14,'2017-02-24 21:00:00','3463246234632463','testowy@test.pl','ul. Sienkiewicza 4/3',500,11,11,'test',1),(15,'2017-02-24 21:00:00','3463246234632463','testowy@test.pl','ul. Sienkiewicza 536',23,12,12,'test',1),(16,'2017-03-18 23:59:00','505707909','hermiona@mail.pl','ul.moja hacjęda',2147483647,13,13,'Minecraft',1),(17,'2017-03-18 23:59:00','505707909','hermiona@mail.pl','ul.moja hacjęda',2147483647,14,14,'Minecraft',1),(18,'2017-02-14 15:58:00','505707909','hermiona@mail.pl','ul. dupowa 5/405',89,15,15,'Minecraft',1),(19,'0000-00-00 00:00:00','ghjkkkkkkkk','ghfstdrgfffr@frt','hhhhhhhhhhh',-1,16,16,'Minecraft',1),(20,'2017-02-25 00:47:00','2323523523232352352323','std@gsd.pl','Opole',909,17,17,'test',1),(21,'2017-07-02 12:35:00','425243535','toj@ga.com','nie wiem gdzie',5,18,18,'tojatos',1),(22,'2017-07-02 12:35:00','425243535','toj@ga.com','nie wiem gdzie',500,19,19,'tojatos',1);
 /*!40000 ALTER TABLE `offers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -105,6 +105,31 @@ INSERT INTO `participants` VALUES (1,12,'test',34,'t',1,1,1),(3,16,'test',4,'fg'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `password_change_requests`
+--
+
+DROP TABLE IF EXISTS `password_change_requests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_change_requests` (
+  `id_password_change_requests` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) NOT NULL,
+  `code` varchar(25) NOT NULL,
+  PRIMARY KEY (`id_password_change_requests`,`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_change_requests`
+--
+
+LOCK TABLES `password_change_requests` WRITE;
+/*!40000 ALTER TABLE `password_change_requests` DISABLE KEYS */;
+INSERT INTO `password_change_requests` VALUES (1,'kappa@o2.pl','4a84d7f0a5718269b2c804ed6');
+/*!40000 ALTER TABLE `password_change_requests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `rooms`
 --
 
@@ -118,7 +143,7 @@ CREATE TABLE `rooms` (
   `living_room` tinyint(1) NOT NULL DEFAULT '0',
   `bedroom` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_rooms`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,7 +152,7 @@ CREATE TABLE `rooms` (
 
 LOCK TABLES `rooms` WRITE;
 /*!40000 ALTER TABLE `rooms` DISABLE KEYS */;
-INSERT INTO `rooms` VALUES (1,1,1,0,0),(2,0,0,0,0),(3,0,0,0,0),(4,1,1,1,1),(5,0,0,0,0),(6,1,1,1,1),(7,0,1,0,0),(8,0,0,1,1),(9,0,0,0,0),(10,0,1,0,0),(11,0,1,0,0),(12,0,1,0,0),(13,1,0,0,0),(14,1,0,0,0),(15,1,0,0,0),(16,1,0,0,0),(17,1,0,0,0);
+INSERT INTO `rooms` VALUES (1,1,1,0,0),(2,0,0,0,0),(3,0,0,0,0),(4,1,1,1,1),(5,0,0,0,0),(6,1,1,1,1),(7,0,1,0,0),(8,0,0,1,1),(9,0,0,0,0),(10,0,1,0,0),(11,0,1,0,0),(12,0,1,0,0),(13,1,0,0,0),(14,1,0,0,0),(15,1,0,0,0),(16,1,0,0,0),(17,1,0,0,0),(18,0,1,0,0),(19,1,0,0,0);
 /*!40000 ALTER TABLE `rooms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +168,7 @@ CREATE TABLE `todos` (
   `clean_car` tinyint(1) NOT NULL DEFAULT '0',
   `clean_windows` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_todos`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +177,7 @@ CREATE TABLE `todos` (
 
 LOCK TABLES `todos` WRITE;
 /*!40000 ALTER TABLE `todos` DISABLE KEYS */;
-INSERT INTO `todos` VALUES (1,1,0),(2,1,1),(3,1,1),(4,1,1),(5,1,1),(6,0,0),(7,0,0),(8,1,1),(9,1,1),(10,0,0),(11,0,0),(12,1,1),(13,1,0),(14,1,0),(15,0,1),(16,1,0),(17,0,0);
+INSERT INTO `todos` VALUES (1,1,0),(2,1,1),(3,1,1),(4,1,1),(5,1,1),(6,0,0),(7,0,0),(8,1,1),(9,1,1),(10,0,0),(11,0,0),(12,1,1),(13,1,0),(14,1,0),(15,0,1),(16,1,0),(17,0,0),(18,1,0),(19,0,0);
 /*!40000 ALTER TABLE `todos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +232,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (7,'tojatos','dfd78a16b381b25866f43fc5ee1758438d81cd14','tojatos@gmail.com','standard',1,0),(9,'admin','7c99cb247ff984c46570e8331ef65ae5fe9ae76c','admin@localhost','administrator',1,0),(10,'test','3afeaa52bf36f292938d8ad6709643462a200960','test@test.pl','standard',1,0),(11,'Minecraft','b0fa7aa8daa7fe70d1e8dbcc2651f5a749db65d6','hermiona@mail.pl','standard',1,0),(12,'maciej_bajda','3afeaa52bf36f292938d8ad6709643462a200960','maciej.bajda@mbajda.pro','standard',1,0),(13,'lul','d86f394856933f22217741c096844d2a0eb601f9','lul@lul.lul','standard',0,0),(14,'tost','d86f394856933f22217741c096844d2a0eb601f9','tojatos@mail.com','standard',0,0),(15,'toster','d86f394856933f22217741c096844d2a0eb601f9','tojadtos@mail.com','standard',0,0),(16,'testf','5245bb6491875746220d19ad5a6888d86b0b4c77','tojads@mail.com','standard',0,0),(17,'dfsdf','5245bb6491875746220d19ad5a6888d86b0b4c77','toj324ads@mail.com','standard',0,0);
+INSERT INTO `users` VALUES (7,'tojatos','dfd78a16b381b25866f43fc5ee1758438d81cd14','tojatos@gmail.com','standard',1,0),(9,'admin','7c99cb247ff984c46570e8331ef65ae5fe9ae76c','admin@localhost','administrator',1,0),(10,'test','3afeaa52bf36f292938d8ad6709643462a200960','test@test.pl','standard',1,0),(11,'Minecraft','b0fa7aa8daa7fe70d1e8dbcc2651f5a749db65d6','hermiona@mail.pl','standard',1,0),(12,'maciej_bajda','3afeaa52bf36f292938d8ad6709643462a200960','maciej.bajda@mbajda.pro','standard',1,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -220,4 +245,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-24 22:28:53
+-- Dump completed on 2017-03-02 16:45:10

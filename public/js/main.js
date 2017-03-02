@@ -79,4 +79,6 @@ $(function () {
 	sendPostDataOnSubmit('.confirm_form', 'Participants/ajax_confirmParticipation', true);
 	sendPostDataOnSubmit('.finish_offer_form', 'Participants/ajax_finishOffer', true);
 	sendPostDataOnSubmit('.opinion_form', 'Opinions/ajax_addOpinion', true);
+	sendPostDataOnSubmit('.forgotten_password_form', 'Users/ajax_forgottenPassword', true);
+	sendPostDataOnSubmit('.change_password_form', 'Users/ajax_changePassword', true);
 });

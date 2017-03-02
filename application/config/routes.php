@@ -11,3 +11,5 @@ $route['Offer/(:num)'] = 'Offers/showOffer/$1';
 $route['User/(:any)'] = 'Users/showUser/$1';
 $route['Participants/(:num)'] = 'Participants/showParticipants/$1';
 $route['Verify/(:any)'] = 'Verify/index/$1';
+$route['ForgottenPassword'] = 'Users/showForgottenPasswordForm';
+$route['ChangePassword/(:any)'] = 'Users/showChangePasswordForm/$1';

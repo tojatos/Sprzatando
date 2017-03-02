@@ -41,15 +41,16 @@ class Users extends MY_Controller
 
         return $data;
     }
-    private function showUserPage($username, $data){
-      $data['addOpinionForm'] = $this->loadContent('Opinions/addOpinionForm', ['username' => $username]);
-      $user_opinions = $this->Opinions_model->getOpinions($username);
-      $data['user_opinions'] = $this->loadContent('Opinions/showOpinions', ['opinions' => $user_opinions]);
-      $data['user_message'] = $this->getUserMessage($username);
-      $data['mainNav'] = $this->loadMainNav();
-      $data['title'] = 'Profil użytkownika '.$username;
-      $data['content'] = $this->loadContent('Users/showUser', $data);
-      $this->showMainView($data);
+    private function showUserPage($username, $data)
+    {
+        $data['addOpinionForm'] = $this->loadContent('Opinions/addOpinionForm', ['username' => $username]);
+        $user_opinions = $this->Opinions_model->getOpinions($username);
+        $data['user_opinions'] = $this->loadContent('Opinions/showOpinions', ['opinions' => $user_opinions]);
+        $data['user_message'] = $this->getUserMessage($username);
+        $data['mainNav'] = $this->loadMainNav();
+        $data['title'] = 'Profil użytkownika '.$username;
+        $data['content'] = $this->loadContent('Users/showUser', $data);
+        $this->showMainView($data);
     }
     public function ajax_changeUserMessage()
     {
@@ -82,6 +83,82 @@ class Users extends MY_Controller
             }
         } catch (Exception $e) {
             return $e->getMessage();
+        }
+    }
+    public function showForgottenPasswordForm()
+    {
+        $this->showView('Users/forgottenPasswordForm');
+    }
+    public function showChangePasswordForm($code)
+    {
+        $this->load->model('User_model');
+        $isValid = $this->User_model->validateCode($code);
+        if (!$isValid) {
+            $this->showError('Ten kod jest nieprawidłowy!');
+        } else{
+          $this->showView('Users/changePasswordForm', ['code' => $code]);
+        }
+    }
+    public function ajax_forgottenPassword()
+    {
+        try {
+            $email = $this->input->post('email');
+
+            validateForm([
+              'e-mail' => [$email, 50],
+            ]);
+            if (!valid_email($email)) {
+                throw new Exception('Wprowadzony e-mail jest nieprawidłowy!');
+            }
+            $code = substr(str_shuffle(md5(microtime())), 0, 25);
+            $this->load->model('User_model');
+            $try = $this->User_model->addPasswordChangeRequest($email, $code);
+            if ($try != null) {
+                throw new Exception($try);
+            }
+
+            $this->sendForgottenPasswordMail($email, $code);
+
+            echo '<h2>Pomyślnie wysłano mail.<br></h2>';
+        } catch (Exception $e) {
+            echo '<h2>Wysłanie maila nie powiodło się:</h2><br>';
+            echo $e->getMessage();
+        }
+    }
+    private function sendForgottenPasswordMail($email, $code)
+    {
+        $this->load->library('email');
+        $config['mailtype'] = 'html';
+        $this->email->initialize($config);
+        $this->email->from('noreply@sprzatando', 'Password changer');
+        $this->email->to($email);
+        $this->email->subject('Sprzątando - Prośba o zmianę hasła');
+        $this->email->message('
+        <h1>Zmiana hasła</h1>
+        Możesz zmienić swoje hasło klikając w <a href="'.site_url('ChangePassword/').$code.'">ten link</a>.<br><br>
+        Jeżeli nie chciałeś zmienić hasła na '.base_url().' zignoruj tę wiadomość.
+        ');
+        $this->email->send();
+    }
+    public function ajax_changePassword()
+    {
+        try {
+            $code = $this->input->post('code');
+            $password = $this->input->post('password');
+
+            validateForm(['hasło' => [$password, 255]]);
+
+            $this->load->model('User_model');
+            $isValid = $this->User_model->validateCode($code);
+            if (!$isValid) {
+                throw new Exception('Ten kod jest nieprawidłowy!');
+            }
+            $this->User_model->changePassword($code, $password);
+            $this->User_model->removeRequest($code);
+            echo 'Pomyślnie zmieniono hasło.';
+        } catch (Exception $e) {
+            echo 'Zmiana hasła nie powiodła się:<br>';
+            echo $e->getMessage();
         }
     }
 }
